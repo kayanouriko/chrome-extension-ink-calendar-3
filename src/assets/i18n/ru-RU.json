@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "Бой салаг",
+        "bankara": "Стихийный бой",
+        "x": "Бой X",
+        "splatfest": "Сплатфест-бой",
+        "salmonrun": "Salmon Run"
+    },
+    "option": {
+        "title": "Параметры",
+        "general": {
+            "title": "Общие",
+            "preferred-languages": "Предпочитаемые языки",
+            "preferred-languages-tip": "Когда это возможно, текст на сайтах будет отображаться на выбранном вами языке."
+        },
+        "about": {
+            "title": "О программе",
+            "thanks": "Благодарности"
+        }
+    },
+    "time": {
+        "now": "Сейчас",
+        "next": "Следующий",
+        "until": "До {time}"
+    },
+    "salmonrun": {
+        "weapons": "Табельное оружие"
+    },
+    "splatfest": {
+        "name": "Трехцветный бой",
+        "midterm-time": "Starts at {0}",
+        "all": "All splatfest info"
+    },
+    "schedule": {
+        "festtime": "Splatfest battle in progress!",
+        "series": "Серия",
+        "open": "Открытый"
+    },
+    "splatnet-shop": {
+        "title": "SplatNet Shop",
+        "sale": "Особое предложение",
+        "dailydrop": "Свежачок дня",
+        "pickup": "Свежачок дня",
+        "tip": "Stock updated every four hours.",
+        "tip1": "A shop with SplatNet-exclusive gear offering different abilities!"
+    },
+    "splatnet": {}
+}

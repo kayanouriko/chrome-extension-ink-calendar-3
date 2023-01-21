@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "一般比賽",
+        "bankara": "蠻頹比賽",
+        "x": "X比賽",
+        "splatfest": "祭典比賽",
+        "salmonrun": "SALMON RUN"
+    },
+    "option": {
+        "title": "選項",
+        "general": {
+            "title": "一般",
+            "preferred-languages": "慣用語言",
+            "preferred-languages-tip": "擴充套件會儘可能以你慣用的語言顯示網站文字."
+        },
+        "about": {
+            "title": "關於",
+            "thanks": "致謝"
+        }
+    },
+    "time": {
+        "now": "開放",
+        "next": "下次",
+        "until": "到 {time} 為止"
+    },
+    "salmonrun": {
+        "weapons": "派發武器"
+    },
+    "splatfest": {
+        "name": "三色奪寶對戰",
+        "midterm-time": "從 {0} 開始!",
+        "all": "所有祭典信息"
+    },
+    "schedule": {
+        "festtime": "祭典比賽舉行中!",
+        "series": "挑戰",
+        "open": "開放"
+    },
+    "splatnet-shop": {
+        "title": "魷魚鬚商城",
+        "sale": "目前販售的裝備",
+        "dailydrop": "本日精選",
+        "pickup": "精選",
+        "tip": "商品陣容每隔4小時便會更換",
+        "tip1": "在此商店中可以獲取附加裝備能力與平時不同的特殊裝備"
+    },
+    "splatnet": {}
+}

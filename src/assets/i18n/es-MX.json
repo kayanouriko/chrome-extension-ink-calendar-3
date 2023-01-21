@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "Combate amistoso",
+        "bankara": "Combate caótico",
+        "x": "Combate X",
+        "splatfest": "Combate temático",
+        "salmonrun": "Salmon Run"
+    },
+    "option": {
+        "title": "Opciones",
+        "general": {
+            "title": "General",
+            "preferred-languages": "Idiomas preferidos",
+            "preferred-languages-tip": "Si es posible, los sitios web muestran texto en tu idioma preferido."
+        },
+        "about": {
+            "title": "Acerca de",
+            "thanks": "Agradecimientos"
+        }
+    },
+    "time": {
+        "now": "Actual",
+        "next": "Siguiente",
+        "until": "Hasta {time}"
+    },
+    "salmonrun": {
+        "weapons": "Armas disponibles"
+    },
+    "splatfest": {
+        "name": "Territorial tricolor",
+        "midterm-time": "Starts at {0}",
+        "all": "All splatfest info"
+    },
+    "schedule": {
+        "festtime": "Splatfest battle in progress!",
+        "series": "Formal",
+        "open": "Informal"
+    },
+    "splatnet-shop": {
+        "title": "SplatNet Shop",
+        "sale": "Equipamiento a la venta",
+        "dailydrop": "Marca destacada",
+        "pickup": "Marca destacada",
+        "tip": "Stock updated every four hours.",
+        "tip1": "A shop with SplatNet-exclusive gear offering different abilities!"
+    },
+    "splatnet": {}
+}

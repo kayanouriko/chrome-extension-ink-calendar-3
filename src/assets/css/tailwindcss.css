@@ -1,0 +1,21 @@
+@import url('./fonts.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* 自定义滚动条样式 */
+    .thin-scrollbar::-webkit-scrollbar {
+        width: 4px;
+        background-color: rgb(30 41 59);
+    }
+
+    .thin-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgb(250 204 21);
+    }
+
+    .thin-scrollbar {
+        scrollbar-width: thin;
+    }
+}

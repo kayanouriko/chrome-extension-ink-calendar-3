@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "一般比赛",
+        "bankara": "蛮颓比赛",
+        "x": "X比赛",
+        "splatfest": "祭典比赛",
+        "salmonrun": "鲑鱼跑"
+    },
+    "option": {
+        "title": "选项",
+        "general": {
+            "title": "常规",
+            "preferred-languages": "首选语言",
+            "preferred-languages-tip": "扩展会尽可能以您的首选语言显示内容"
+        },
+        "about": {
+            "title": "关于",
+            "thanks": "致谢"
+        }
+    },
+    "time": {
+        "now": "开放",
+        "next": "下次",
+        "until": "到 {time} 为止"
+    },
+    "salmonrun": {
+        "weapons": "发放武器"
+    },
+    "splatfest": {
+        "name": "三色夺宝比赛",
+        "midterm-time": "从 {0} 开始!",
+        "all": "所有祭典信息"
+    },
+    "schedule": {
+        "festtime": "祭典比赛举行中!",
+        "series": "挑战",
+        "open": "开放"
+    },
+    "splatnet-shop": {
+        "title": "鱿鱼须商城",
+        "sale": "目前贩卖的装备",
+        "dailydrop": "今日精选",
+        "pickup": "精选",
+        "tip": "每经过4小时, 商品就会发生变化",
+        "tip1": "在此商店中, 可以获取附加的装备能力与平时不同的特殊装备"
+    },
+    "splatnet": {}
+}

@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "레귤러 매치",
+        "bankara": "카오폴리스 매치",
+        "x": "X 매치",
+        "splatfest": "페스티벌 매치",
+        "salmonrun": "새먼 런"
+    },
+    "option": {
+        "title": "옵션",
+        "general": {
+            "title": "일반",
+            "preferred-languages": "선호 언어",
+            "preferred-languages-tip": "가능한 경우 웹사이트에서 텍스트를 선호하는 언어로 표시합니다."
+        },
+        "about": {
+            "title": "정보",
+            "thanks": "감사합니다"
+        }
+    },
+    "time": {
+        "now": "오픈",
+        "next": "다음",
+        "until": "{time}까지"
+    },
+    "salmonrun": {
+        "weapons": "지급 무기"
+    },
+    "splatfest": {
+        "name": "트리컬러 배틀",
+        "midterm-time": "Starts at {0}",
+        "all": "All splatfest info"
+    },
+    "schedule": {
+        "festtime": "Splatfest battle in progress!",
+        "series": "챌린지",
+        "open": "오픈"
+    },
+    "splatnet-shop": {
+        "title": "SplatNet Shop",
+        "sale": "현재 판매 중인 기어",
+        "dailydrop": "오늘의 픽업",
+        "pickup": "오늘의 픽업",
+        "tip": "Stock updated every four hours.",
+        "tip1": "A shop with SplatNet-exclusive gear offering different abilities!"
+    },
+    "splatnet": {}
+}

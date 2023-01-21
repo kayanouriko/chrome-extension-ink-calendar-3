@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "Standaardgevecht",
+        "bankara": "Chaosgevecht",
+        "x": "X-gevecht",
+        "splatfest": "Splatfest-gevecht",
+        "salmonrun": "Salmon Run"
+    },
+    "option": {
+        "title": "Opties",
+        "general": {
+            "title": "Algemeen",
+            "preferred-languages": "Voorkeurstalen",
+            "preferred-languages-tip": "Extensies worden indien mogelijk weergegeven in je voorkeurstaal."
+        },
+        "about": {
+            "title": "Over",
+            "thanks": "Colofon"
+        }
+    },
+    "time": {
+        "now": "Nu",
+        "next": "Volgende",
+        "until": "Tot {time}"
+    },
+    "salmonrun": {
+        "weapons": "Beschikbare wapens"
+    },
+    "splatfest": {
+        "name": "Driekleurenoorlog",
+        "midterm-time": "Starts at {0}",
+        "all": "All splatfest info"
+    },
+    "schedule": {
+        "festtime": "Splatfest battle in progress!",
+        "series": "Sessie",
+        "open": "Open"
+    },
+    "splatnet-shop": {
+        "title": "SplatNet Shop",
+        "sale": "Nu in de aanbieding",
+        "dailydrop": "Verse vangst",
+        "pickup": "Verse vangst",
+        "tip": "Stock updated every four hours.",
+        "tip1": "A shop with SplatNet-exclusive gear offering different abilities!"
+    },
+    "splatnet": {}
+}

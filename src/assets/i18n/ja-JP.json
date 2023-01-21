@@ -1,0 +1,48 @@
+{
+    "navbar": {
+        "regular": "レギュラーマッチ",
+        "bankara": "バンカラマッチ",
+        "x": "Xマッチ",
+        "splatfest": "フェスマッチ",
+        "salmonrun": "サーモンラン"
+    },
+    "option": {
+        "title": "オプション",
+        "general": {
+            "title": "全般",
+            "preferred-languages": "優先言語",
+            "preferred-languages-tip": "可能な場合、設定した言語でウェブサイトのテキストを表示します。"
+        },
+        "about": {
+            "title": "説明",
+            "thanks": "ありがとう"
+        }
+    },
+    "time": {
+        "now": "オープン",
+        "next": "つぎ",
+        "until": "{time} まで"
+    },
+    "salmonrun": {
+        "weapons": "支給ブキ"
+    },
+    "splatfest": {
+        "name": "トリカラバトル",
+        "midterm-time": "{0} から",
+        "all": "すべてのフェスマッチ情報"
+    },
+    "schedule": {
+        "festtime": "フェスマッチ進行中!",
+        "series": "チャレンジ",
+        "open": "オープン"
+    },
+    "splatnet-shop": {
+        "title": "ゲソタウン",
+        "sale": "ただいま販売中のギア",
+        "dailydrop": "本日のピックアップ",
+        "pickup": "ピックアップ",
+        "tip": "商品は4時間ごとに入れ替わります",
+        "tip1": "ふだんとは違うギアパワーがついたトクベツなギアが手に入るショップ"
+    },
+    "splatnet": {}
+}
