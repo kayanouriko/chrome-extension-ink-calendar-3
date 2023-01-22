@@ -9,9 +9,15 @@ In this project, All data access comes from [Data-Access](https://github.com/mis
 
 <img src="./images/preview1.png" width="250px" /> <img src="./images/preview2.png" width="250px" /> <img src="./images/preview3.png" width="250px" />
 
-## Setup
+## Downloads
+
+### Chrome Web Store
+
+[Install from Chrome Web Store](https://chrome.google.com/webstore/detail/ink-calendar-3/mnlhfcmbaadogjckmomandmdfiekjoog)
 
 ### Build project by yourself
+
+clone this project
 
 ```
 pnpm install
