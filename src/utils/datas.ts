@@ -1,6 +1,11 @@
 import '../extension/date.extension'
-import { getScheduleData } from './fetch'
-import { getScheduleDataFromLocal, setScheduleDataToLocal } from './storage'
+import { getScheduleData, getLocaleData } from './fetch'
+import {
+    getLocaleDataFromLocal,
+    getScheduleDataFromLocal,
+    setLocaleDataToLocal,
+    setScheduleDataToLocal
+} from './storage'
 
 // 接口部分
 
@@ -124,7 +129,7 @@ export enum BattleType {
 let datas: Data | null = null
 
 class DataManager {
-    async initData() {
+    async initData(code: string) {
         // 先检测本地是否有数据
         const { shouldFetch, data } = await getScheduleDataFromLocal()
         if (shouldFetch) {
@@ -134,6 +139,23 @@ class DataManager {
         } else {
             datas = data!
         }
+        // 判断是否需要更新 locale
+        // 只有当 schedule 不需要更新, 且本地语言更新时间不超过两小时的时候不需要更新 locale
+        if (!shouldFetch) {
+            const localeData = await getLocaleDataFromLocal(code)
+            if (localeData) {
+                const { time, locale } = localeData
+                const ms = new Date().getTime() - time
+                if (ms > 0 && ms / 1000 / 60 / 60 < 2) {
+                    console.log('[ink calendar 3]额外的国际化语言不需要联网更新')
+                    return locale
+                }
+            }
+        }
+        // 其余情况需要更新 locale
+        const locale = await getLocaleData(code)
+        setLocaleDataToLocal(code, locale)
+        return locale
     }
     // 数据源
     get datas() {

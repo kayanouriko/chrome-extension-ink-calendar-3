@@ -25,7 +25,7 @@ import { useInkI18n } from '../../utils/useI18n'
 
 // 先切换环境
 const currentLocale = await getCurrentLocale()
-const { locale } = useI18n()
+const { locale, setLocaleMessage, getLocaleMessage } = useI18n()
 const { changeSplatfont } = useInkI18n()
 if (locale.value !== currentLocale.code) {
     locale.value = currentLocale.code
@@ -35,7 +35,13 @@ if (currentLocale.code === 'zh-CN' || currentLocale.code === 'zh-TW') {
 }
 // 请求数据
 const { initData } = useData()
-await initData()
+// 获取到当前语言的 ex 部分数据
+const localeData = await initData(currentLocale.code)
+// 更新到 i18n 里面去
+setLocaleMessage(currentLocale.code, {
+    ...getLocaleMessage(currentLocale.code),
+    splatnet: localeData
+})
 // 正常流程
 const { isFestTime, currentBattleTypes } = useData()
 const defaultType = isFestTime ? BattleType.Splatfest : BattleType.Bankara

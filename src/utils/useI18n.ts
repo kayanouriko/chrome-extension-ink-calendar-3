@@ -15,21 +15,6 @@ import ruRU from '../assets/i18n/ru-RU.json'
 import zhCN from '../assets/i18n/zh-CN.json'
 import zhTW from '../assets/i18n/zh-TW.json'
 
-import deDEEx from '../assets/i18n/locales/de-DE.json'
-import enGBEx from '../assets/i18n/locales/en-GB.json'
-import enUSEx from '../assets/i18n/locales/en-US.json'
-import esESEx from '../assets/i18n/locales/es-ES.json'
-import esMXEx from '../assets/i18n/locales/es-MX.json'
-import frCAEx from '../assets/i18n/locales/fr-CA.json'
-import frFREx from '../assets/i18n/locales/fr-FR.json'
-import itITEx from '../assets/i18n/locales/it-IT.json'
-import jaJPEx from '../assets/i18n/locales/ja-JP.json'
-import koKREx from '../assets/i18n/locales/ko-KR.json'
-import nlNLEx from '../assets/i18n/locales/nl-NL.json'
-import ruRUEx from '../assets/i18n/locales/ru-RU.json'
-import zhCNEx from '../assets/i18n/locales/zh-CN.json'
-import zhTWEx from '../assets/i18n/locales/zh-TW.json'
-
 export interface Locale {
     name: string
     code: string
@@ -58,21 +43,6 @@ class InkI18n {
         }
     }
 }
-
-deDE.splatnet = deDEEx
-enGB.splatnet = enGBEx
-enUS.splatnet = enUSEx
-esES.splatnet = esESEx
-esMX.splatnet = esMXEx
-frCA.splatnet = frCAEx
-frFR.splatnet = frFREx
-itIT.splatnet = itITEx
-jaJP.splatnet = jaJPEx
-koKR.splatnet = koKREx
-nlNL.splatnet = nlNLEx
-ruRU.splatnet = ruRUEx
-zhCN.splatnet = zhCNEx
-zhTW.splatnet = zhTWEx
 
 const messages = {
     'de-DE': deDE,
@@ -111,15 +81,13 @@ const locales = [
 
 const inkI18n = new InkI18n()
 
-let i18n = createI18n({
-    legacy: false, // 使用组合式api
-    locale: 'en-US',
-    fallbackLocale: 'en-US',
-    messages
-})
-
 export function initI18n() {
-    return i18n
+    return createI18n({
+        legacy: false, // 使用组合式api
+        locale: 'en-US',
+        fallbackLocale: 'en-US',
+        messages
+    })
 }
 
 export function useInkI18n() {

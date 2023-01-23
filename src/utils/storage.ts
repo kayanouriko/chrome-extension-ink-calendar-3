@@ -6,6 +6,7 @@ const STORAGE_SYNC_LOCALE = 'ink-calendar-3-current-locale'
 const STORAGE_SYNC_BATTLE_TYPE = 'ink-calendar-3-battle-type'
 const STORAGE_LOCAL_DATA = 'ink-calendar-3-schedule-data'
 const STORAGE_LOCAL_GEAR_DATA = 'ink-calendar-3-gear-data'
+const STORAGE_LOCAL_LOCALE_DATA = 'ink-calendar-3-locale-'
 const DEFAULT_LOCALE: Locale = { code: 'en-US', name: 'English(US)' }
 
 // 从同步数据中获取当前语言
@@ -31,7 +32,7 @@ async function getCurrentLocale() {
 // 保存当前语言到同步数据中
 function setCurrentLocale(locale: Locale) {
     chrome.storage.sync.set({ [STORAGE_SYNC_LOCALE]: locale }).then(() => {
-        console.log(`[ink calendar 3]locale: ${locale.name} storaged!`)
+        console.log(`[ink calendar 3]使用的语言: ${locale.name} 已存储!`)
     })
 }
 
@@ -52,7 +53,7 @@ async function getLastBattleType(defaultType: BattleType, currentTypes: BattleTy
 // 保存选择的 type 到同步数据
 function setLastBattleType(type: BattleType) {
     chrome.storage.sync.set({ [STORAGE_SYNC_BATTLE_TYPE]: type }).then(() => {
-        console.log(`[ink calendar 3]type: ${type} storaged!`)
+        console.log(`[ink calendar 3]选中的标签: ${type} 已保存!`)
     })
 }
 
@@ -68,7 +69,7 @@ async function getScheduleDataFromLocal(): Promise<{ shouldFetch: boolean; data:
         const scheduleDate = new Date(data.festSchedules.nodes[1].startTime)
         const date = new Date()
         if (date < scheduleDate) {
-            console.log(`[ink calendar 3]目前不需要网络请求数据`)
+            console.log(`[ink calendar 3]目前日程表的数据不需要联网请求`)
             return {
                 shouldFetch: false,
                 data
@@ -84,7 +85,7 @@ async function getScheduleDataFromLocal(): Promise<{ shouldFetch: boolean; data:
 // 保存 schedule 的数据到本地数据
 function setScheduleDataToLocal(data: Data) {
     chrome.storage.local.set({ [STORAGE_LOCAL_DATA]: data }).then(() => {
-        console.log(`[ink calendar 3]schedule data did storaged!`)
+        console.log(`[ink calendar 3]日程表的数据已存储!`)
     })
 }
 
@@ -100,7 +101,7 @@ async function getGearDataFromLocal(): Promise<{ shouldFetch: boolean; data: Spl
         const time = pickupTime < limitedTime ? pickupTime : limitedTime
         if (new Date() < time) {
             // 这时候不需要更新
-            console.log(`[ink calendar 3]目前不需要网络请求数据`)
+            console.log(`[ink calendar 3]目前商店的数据不需要联网请求`)
             return {
                 shouldFetch: false,
                 data
@@ -115,7 +116,26 @@ async function getGearDataFromLocal(): Promise<{ shouldFetch: boolean; data: Spl
 
 function setGearDataToLocal(data: Splatnet) {
     chrome.storage.local.set({ [STORAGE_LOCAL_GEAR_DATA]: data }).then(() => {
-        console.log(`[ink calendar 3]gear data did storaged!`)
+        console.log(`[ink calendar 3]商店的数据已存储!`)
+    })
+}
+
+async function getLocaleDataFromLocal(code: string) {
+    const key = STORAGE_LOCAL_LOCALE_DATA + code
+    const result = await chrome.storage.local.get(key)
+    const data = result[STORAGE_LOCAL_LOCALE_DATA + code] as { time: number; locale: any } | null
+    return data
+}
+
+function setLocaleDataToLocal(code: string, locale: any) {
+    const key = STORAGE_LOCAL_LOCALE_DATA + code
+    const time = new Date().getTime()
+    const value = {
+        time,
+        locale
+    }
+    chrome.storage.local.set({ [key]: value }).then(() => {
+        console.log(`[ink calendar 3]额外的国际化语言数据: ${code} 已存储!`)
     })
 }
 
@@ -127,5 +147,7 @@ export {
     getScheduleDataFromLocal,
     setScheduleDataToLocal,
     getGearDataFromLocal,
-    setGearDataToLocal
+    setGearDataToLocal,
+    getLocaleDataFromLocal,
+    setLocaleDataToLocal
 }
