@@ -4,5 +4,3 @@
         <p class="font-splatoon2 text-white text-base">Loading...</p>
     </div>
 </template>
-
-<script setup lang="ts"></script>

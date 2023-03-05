@@ -1,5 +1,5 @@
-import { Locale, useInkI18n } from './useI18n'
-import { Data, BattleType } from './datas'
+import { Locale, locales } from './useI18n'
+import { Data, BattleType, useDatas } from './datas'
 import { Splatnet } from './gearDatas'
 
 const STORAGE_SYNC_LOCALE = 'ink-calendar-3-current-locale'
@@ -10,14 +10,17 @@ const STORAGE_LOCAL_LOCALE_DATA = 'ink-calendar-3-locale-'
 const DEFAULT_LOCALE: Locale = { code: 'en-US', name: 'English(US)' }
 
 // 从同步数据中获取当前语言
-async function getCurrentLocale() {
+async function getCurrentLocale(): Promise<Locale> {
+    if (import.meta.env.DEV) {
+        return DEFAULT_LOCALE
+    }
+    // 先从同步数据里面获取
     const result = await chrome.storage.sync.get(STORAGE_SYNC_LOCALE)
     const locale = result[STORAGE_SYNC_LOCALE] as Locale | null
     if (locale) {
         return locale
     }
     // 如果同步数据没保存首选语言, 则匹配浏览器首选语言
-    const { locales } = useInkI18n()
     const chromeLanguageCode = chrome.i18n.getUILanguage()
     const chromeLocale = locales.find(l => l.code === chromeLanguageCode)
     if (chromeLocale) {
@@ -37,15 +40,20 @@ function setCurrentLocale(locale: Locale) {
 }
 
 // 从同步数据获取 type
-async function getLastBattleType(defaultType: BattleType, currentTypes: BattleType[]) {
+async function getLastBattleType() {
+    if (import.meta.env.DEV) {
+        return 0 as BattleType
+    }
+    const { isFestTime, currentBattleTypes } = useDatas()
     const result = await chrome.storage.sync.get(STORAGE_SYNC_BATTLE_TYPE)
     const battleType = result[STORAGE_SYNC_BATTLE_TYPE] as BattleType | null
     if (battleType) {
-        const type = currentTypes.find(t => t === battleType)
+        const type = currentBattleTypes.find(t => t === battleType)
         if (type) {
             return type
         }
     }
+    const defaultType = isFestTime ? BattleType.Splatfest : BattleType.Bankara
     setLastBattleType(defaultType)
     return defaultType
 }
@@ -120,14 +128,16 @@ function setGearDataToLocal(data: Splatnet) {
     })
 }
 
-async function getLocaleDataFromLocal(code: string) {
+async function getLocaleDataFromLocal() {
+    const code = (await getCurrentLocale()).code
     const key = STORAGE_LOCAL_LOCALE_DATA + code
     const result = await chrome.storage.local.get(key)
     const data = result[STORAGE_LOCAL_LOCALE_DATA + code] as { time: number; locale: any } | null
     return data
 }
 
-function setLocaleDataToLocal(code: string, locale: any) {
+async function setLocaleDataToLocal(locale: Locale) {
+    const code = (await getCurrentLocale()).code
     const key = STORAGE_LOCAL_LOCALE_DATA + code
     const time = new Date().getTime()
     const value = {

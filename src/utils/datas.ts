@@ -17,9 +17,6 @@ export interface Data {
     bankaraSchedules: {
         nodes: Schedule[]
     }
-    leagueSchedules: {
-        nodes: Schedule[]
-    }
     xSchedules: {
         nodes: Schedule[]
     }
@@ -27,6 +24,7 @@ export interface Data {
         nodes: Schedule[]
     }
     coopGroupingSchedule: {
+        bannerImage: { url: string } | null
         regularSchedules: { nodes: CoopSchedule[] }
         bigRunSchedules: { nodes: CoopSchedule[] }
     }
@@ -125,45 +123,111 @@ export enum BattleType {
     Salmonrun // 鲑鱼跑
 }
 
-// 获取 data 信息
-let datas: Data | null = null
-
-class DataManager {
-    async initData(code: string) {
-        // 先检测本地是否有数据
-        const { shouldFetch, data } = await getScheduleDataFromLocal()
-        if (shouldFetch) {
-            const { data } = await getScheduleData()
-            datas = data
-            setScheduleDataToLocal(data)
-        } else {
-            datas = data!
+export namespace BattleType {
+    // 获取模式对应图标
+    export function getTypeIcon(type: BattleType) {
+        switch (type) {
+            case BattleType.Regular:
+                return '/images/regular.svg'
+            case BattleType.Bankara:
+                return '/images/bankara.svg'
+            case BattleType.X:
+                return '/images/x.svg'
+            case BattleType.Splatfest:
+                return '/images/tricolor.png'
+            case BattleType.Salmonrun:
+                return '/images/coop.svg'
         }
-        // 判断是否需要更新 locale
-        // 只有当 schedule 不需要更新, 且本地语言更新时间不超过两小时的时候不需要更新 locale
-        if (!shouldFetch) {
-            const localeData = await getLocaleDataFromLocal(code)
-            if (localeData) {
-                const { time, locale } = localeData
-                const ms = new Date().getTime() - time
-                if (ms > 0 && ms / 1000 / 60 / 60 < 2) {
-                    console.log('[ink calendar 3]额外的国际化语言不需要联网更新')
-                    return locale
-                }
+    }
+
+    // 获取模式对应名字
+    export function getTypeTitle(type: BattleType) {
+        switch (type) {
+            case BattleType.Regular:
+                return 'navbar.regular'
+            case BattleType.Bankara:
+                return 'navbar.bankara'
+            case BattleType.X:
+                return 'navbar.x'
+            case BattleType.Splatfest:
+                return 'navbar.splatfest'
+            case BattleType.Salmonrun:
+                return 'navbar.salmonrun'
+        }
+    }
+}
+
+// 获取 data 信息
+export async function updateScheduleAndExLocaleDatas() {
+    const { datas, shouldFetch } = await updateDatas()
+    const exLocale = await updateExLocale(shouldFetch)
+    return {
+        datas,
+        exLocale
+    }
+}
+
+// 更新数据
+async function updateDatas() {
+    // 开发环境使用测试数据
+    if (import.meta.env.DEV) {
+        const { data } = await import('../assets/json/schedules.json')
+        return {
+            shouldFetch: false,
+            datas: data as Data
+        }
+    }
+    // 先检测本地是否有数据
+    const { shouldFetch, data } = await getScheduleDataFromLocal()
+    if (shouldFetch) {
+        const { data } = await getScheduleData()
+        setScheduleDataToLocal(data)
+        return {
+            shouldFetch: true,
+            datas: data
+        }
+    } else {
+        return {
+            shouldFetch: false,
+            datas: data!
+        }
+    }
+}
+
+// 更新额外的国际化翻译
+async function updateExLocale(shouldFetch: boolean) {
+    if (import.meta.env.DEV) {
+        return await import('../assets/json/en-US.json')
+    }
+    // 判断是否需要更新 locale
+    // 只有当 schedule 不需要更新, 且本地语言更新时间不超过两小时的时候不需要更新 locale
+    if (!shouldFetch) {
+        const localeData = await getLocaleDataFromLocal()
+        if (localeData) {
+            const { time, locale } = localeData
+            const ms = new Date().getTime() - time
+            if (ms > 0 && ms / 1000 / 60 / 60 < 2) {
+                console.log('[ink calendar 3]额外的国际化语言不需要联网更新')
+                return locale
             }
         }
-        // 其余情况需要更新 locale
-        const locale = await getLocaleData(code)
-        setLocaleDataToLocal(code, locale)
-        return locale
     }
-    // 数据源
-    get datas() {
-        return datas!
+    // 其余情况需要更新 locale
+    const locale = await getLocaleData()
+    setLocaleDataToLocal(locale)
+    return locale
+}
+
+class DataManager {
+    // 整个数据
+    datas: Data
+
+    constructor(datas: Data) {
+        this.datas = datas
     }
-    // 是否是祭典状态
+    // 是否是祭典期间
     get isFestTime() {
-        return datas!.currentFest !== null
+        return this.datas.currentFest !== null
     }
     // 获取目前可以显示的时间表
     get currentBattleTypes() {
@@ -179,39 +243,9 @@ class DataManager {
         battleTypes.push(BattleType.Salmonrun)
         return battleTypes
     }
-    // 获取模式对应图标
-    getTypeIcon(type: BattleType) {
-        switch (type) {
-            case BattleType.Regular:
-                return '/images/regular.svg'
-            case BattleType.Bankara:
-                return '/images/bankara.svg'
-            case BattleType.X:
-                return '/images/x.svg'
-            case BattleType.Splatfest:
-                return '/images/tricolor.png'
-            case BattleType.Salmonrun:
-                return '/images/coop.svg'
-        }
-    }
-    // 获取模式对应名字
-    getTypeTitle(type: BattleType) {
-        switch (type) {
-            case BattleType.Regular:
-                return 'navbar.regular'
-            case BattleType.Bankara:
-                return 'navbar.bankara'
-            case BattleType.X:
-                return 'navbar.x'
-            case BattleType.Splatfest:
-                return 'navbar.splatfest'
-            case BattleType.Salmonrun:
-                return 'navbar.salmonrun'
-        }
-    }
     // 获取祭典持续时间
-    getFestTime() {
-        const currentFest = datas!.currentFest as Splatfest
+    get festTime() {
+        const currentFest = this.datas.currentFest as Splatfest
         const startTime = new Date(currentFest.startTime)
         const endTime = new Date(currentFest.endTime)
         return (
@@ -225,48 +259,56 @@ class DataManager {
         )
     }
     // 获取祭典的主题
-    getFestQuestion() {
-        const currentFest = datas!.currentFest as Splatfest
+    get festQuestion() {
+        const currentFest = this.datas.currentFest as Splatfest
         return currentFest.title
     }
     // 获取祭典三色夺宝比赛的开始时间
-    getTricolorBattleTime() {
-        const currentFest = datas!.currentFest as Splatfest
+    get tricolorBattleTime() {
+        const currentFest = this.datas.currentFest as Splatfest
         const time = new Date(currentFest.midtermTime)
         return time.getYearMonthDayTime() + ' ' + time.getHourMinTime()
     }
     // 获取三色夺宝比赛的地图信息
-    getTricolorStage() {
-        const currentFest = datas!.currentFest as Splatfest
+    get tricolorStage() {
+        const currentFest = this.datas.currentFest as Splatfest
         return currentFest.tricolorStage
     }
     // 获取涂地时间表的数组
     get regularSchedules() {
-        const schedules = datas!.regularSchedules.nodes
+        const schedules = this.datas.regularSchedules.nodes
         return schedules.filter(s => s.regularMatchSetting !== null)
     }
     // 获取真格时间表(挑战和开放)的数组
     get bankaraSchedules() {
-        const schedules = datas!.bankaraSchedules.nodes
+        const schedules = this.datas.bankaraSchedules.nodes
         return schedules.filter(s => s.bankaraMatchSettings !== null)
     }
     // 获取 x 段位时间表的数组
     get xSchedules() {
-        const schedules = datas!.xSchedules.nodes
+        const schedules = this.datas.xSchedules.nodes
         return schedules.filter(s => s.xMatchSetting !== null)
     }
     // 获取祭典时间表的数组
     get festSchedules() {
-        const schedules = datas!.festSchedules.nodes
+        const schedules = this.datas.festSchedules.nodes
         return schedules.filter(s => s.festMatchSetting !== null)
     }
+    // 是不是大型跑
     get isBigRun() {
-        const coopSchedule = datas!.coopGroupingSchedule
-        return coopSchedule.bigRunSchedules.nodes.length > 0
+        return this.datas.coopGroupingSchedule.bigRunSchedules.nodes.length > 0
+    }
+    // 大型跑数据
+    get bigRunSchedule() {
+        return this.datas.coopGroupingSchedule.bigRunSchedules.nodes[0]
+    }
+    // 获取大型跑的 banner 图
+    get bigRunBannerImage() {
+        return this.datas.coopGroupingSchedule.bannerImage?.url ?? ''
     }
     // 获取鲑鱼跑时间表的数组
     get coopSchedules() {
-        const coopSchedule = datas!.coopGroupingSchedule
+        const coopSchedule = this.datas.coopGroupingSchedule
         if (coopSchedule.regularSchedules.nodes.length > 0) {
             return coopSchedule.regularSchedules.nodes
         } else {
@@ -308,13 +350,15 @@ class DataManager {
         return new Date(timeString).getHourMinTime()
     }
     // 判断是不是同一天和年月日的格式化
-    isSameDay(timeString: string) {
+    isSameDay(timeString: string, isFirstIndex: boolean = false) {
         const date = new Date(timeString)
-        if (date.getHours() !== 0 || date.getMinutes() !== 0) {
+        if (!isFirstIndex) {
             // 不是凌晨的时间直接跳过不用显示
-            return {
-                shouldShowTime: false,
-                showTime: ''
+            if (date.getHours() !== 0 || date.getMinutes() !== 0) {
+                return {
+                    shouldShowTime: false,
+                    showTime: ''
+                }
             }
         }
         // 开始判断是否需要显示年月日
@@ -326,8 +370,15 @@ class DataManager {
     }
 }
 
-const dataManager = new DataManager()
+let dataManager: DataManager | null = null
 
-export function useData() {
+export function createDatas(datas: Data) {
+    if (dataManager === null) {
+        dataManager = new DataManager(datas)
+    }
     return dataManager
+}
+
+export function useDatas() {
+    return dataManager!
 }

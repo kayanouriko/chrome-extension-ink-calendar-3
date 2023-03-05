@@ -24,12 +24,12 @@
         "until": "{time} まで"
     },
     "salmonrun": {
-        "weapons": "支給ブキ"
+        "weapons": "支給ブキ",
+        "bigrun": "ビッグラン"
     },
     "splatfest": {
         "name": "トリカラバトル",
-        "midterm-time": "{0} から",
-        "all": "すべてのフェスマッチ情報"
+        "midterm-time": "{0} から"
     },
     "schedule": {
         "festtime": "フェスマッチ進行中!",

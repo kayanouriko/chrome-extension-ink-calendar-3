@@ -24,12 +24,12 @@
         "until": "До {time}"
     },
     "salmonrun": {
-        "weapons": "Табельное оружие"
+        "weapons": "Табельное оружие",
+        "bigrun": "Big Run"
     },
     "splatfest": {
         "name": "Трехцветный бой",
-        "midterm-time": "Starts at {0}",
-        "all": "All splatfest info"
+        "midterm-time": "Starts at {0}"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

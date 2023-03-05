@@ -7,12 +7,12 @@
 </template>
 
 <script setup lang="ts">
-import { Rule, useData } from '../../utils/datas'
+import { Rule, useDatas } from '../../utils/datas'
 
 const { mode, rule } = defineProps<{
     rule: Rule
     mode?: string
 }>()
 
-const { getRuleIcon, getModeTitle } = useData()
+const { getRuleIcon, getModeTitle } = useDatas()
 </script>

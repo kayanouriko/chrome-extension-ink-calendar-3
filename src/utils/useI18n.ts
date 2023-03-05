@@ -20,30 +20,6 @@ export interface Locale {
     code: string
 }
 
-class InkI18n {
-    // 获取全部支持的语言
-    get locales() {
-        return locales
-    }
-    // 改变字体的同时需要修改 font family
-    changeSplatfont(localeCode: string) {
-        switch (localeCode) {
-            case 'zh-CN':
-                document.documentElement.style.setProperty('--font-family-s1', 'splatoon1, splatoon1chzh, sans-serif')
-                document.documentElement.style.setProperty('--font-family-s2', 'splatoon2, splatoon2chzh, sans-serif')
-                break
-            case 'zh-TW':
-                document.documentElement.style.setProperty('--font-family-s1', 'splatoon1, splatoon1twzh, sans-serif')
-                document.documentElement.style.setProperty('--font-family-s2', 'splatoon2, splatoon2twzh, sans-serif')
-                break
-            default:
-                document.documentElement.style.setProperty('--font-family-s1', 'splatoon1, splatoon1jpja, sans-serif')
-                document.documentElement.style.setProperty('--font-family-s2', 'splatoon2, splatoon2jpja, sans-serif')
-                break
-        }
-    }
-}
-
 const messages = {
     'de-DE': deDE,
     'en-US': enUS,
@@ -62,7 +38,7 @@ const messages = {
 }
 
 // 所有支持的语言
-const locales = [
+export const locales = [
     { code: 'de-DE', name: 'Deutsch' },
     { code: 'en-US', name: 'English (US)' },
     { code: 'en-GB', name: 'English (GB)' },
@@ -79,9 +55,8 @@ const locales = [
     { code: 'zh-TW', name: '中文(台灣)' }
 ]
 
-const inkI18n = new InkI18n()
-
-export function initI18n() {
+// 初始化 i18n 插件
+export function useInkI18n() {
     return createI18n({
         legacy: false, // 使用组合式api
         locale: 'en-US',
@@ -90,6 +65,20 @@ export function initI18n() {
     })
 }
 
-export function useInkI18n() {
-    return inkI18n
+// 改变字体的同时需要修改 font family
+export function changeSplatfont(localeCode: string) {
+    switch (localeCode) {
+        case 'zh-CN':
+            document.documentElement.style.setProperty('--font-family-s1', 'splatoon1, splatoon1chzh, sans-serif')
+            document.documentElement.style.setProperty('--font-family-s2', 'splatoon2, splatoon2chzh, sans-serif')
+            break
+        case 'zh-TW':
+            document.documentElement.style.setProperty('--font-family-s1', 'splatoon1, splatoon1twzh, sans-serif')
+            document.documentElement.style.setProperty('--font-family-s2', 'splatoon2, splatoon2twzh, sans-serif')
+            break
+        default:
+            document.documentElement.style.setProperty('--font-family-s1', 'splatoon1, splatoon1jpja, sans-serif')
+            document.documentElement.style.setProperty('--font-family-s2', 'splatoon2, splatoon2jpja, sans-serif')
+            break
+    }
 }

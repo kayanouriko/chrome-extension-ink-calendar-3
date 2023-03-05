@@ -7,12 +7,13 @@
 </template>
 
 <script setup lang="ts">
-import { useData } from '../../utils/datas'
+import { useDatas } from '../../utils/datas'
 
-const { time } = defineProps<{
+const { time, isFirst } = defineProps<{
+    isFirst: boolean
     time: string
 }>()
 
-const { getTime, isSameDay } = useData()
-const { shouldShowTime, showTime } = isSameDay(time)
+const { getTime, isSameDay } = useDatas()
+const { shouldShowTime, showTime } = isSameDay(time, isFirst)
 </script>

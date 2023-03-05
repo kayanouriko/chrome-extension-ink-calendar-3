@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
-import { initI18n } from './utils/useI18n'
+import { useInkI18n } from './utils/useI18n'
+import { useRouter } from './router/router'
+
 import App from './App.vue'
 
 const app = createApp(App)
-// 国际化插件
-const i18n = initI18n()
-app.use(i18n)
-// 挂载
+app.use(useRouter())
+app.use(useInkI18n())
 app.mount('#app')

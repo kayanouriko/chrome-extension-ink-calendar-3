@@ -1,7 +1,12 @@
 <template>
     <div>
         <CardIsFest v-show="isFestTime"></CardIsFest>
-        <Card v-for="schedule in xSchedules" :schedule="schedule" :battle-type="BattleType.X"></Card>
+        <Card
+            v-for="(schedule, index) in xSchedules"
+            :schedule="schedule"
+            :battle-type="BattleType.X"
+            :is-first="index === 0"
+        ></Card>
     </div>
 </template>
 
@@ -9,7 +14,7 @@
 import Card from '../../components/card/Card.vue'
 import CardIsFest from '../../components/card/CardIsFest.vue'
 
-import { BattleType, useData } from '../../utils/datas'
+import { BattleType, useDatas } from '../../utils/datas'
 
-const { xSchedules, isFestTime } = useData()
+const { xSchedules, isFestTime } = useDatas()
 </script>

@@ -1,72 +1,87 @@
 <template>
     <div class="w-[360px] h-[600px] bg-slate-50 flex flex-col">
         <Navbar :selected-type="state.selectedType"></Navbar>
-        <KeepAlive>
-            <component class="grow overflow-y-auto thin-scrollbar bg-slate-800" :is="currentView"></component>
-        </KeepAlive>
+        <router-view class="grow overflow-y-auto thin-scrollbar bg-slate-800" v-slot="{ Component }">
+            <KeepAlive>
+                <component :is="Component" />
+            </KeepAlive>
+        </router-view>
         <Tabbar :selected-type="state.selectedType" @change-tabbar-type="changeTabbarType"></Tabbar>
     </div>
 </template>
 
 <script setup lang="ts">
 import Navbar from '../../components/navbar/Navbar.vue'
-import BankaraView from '../bankara/BankaraView.vue'
-import RegularView from '../regular/RegularView.vue'
-import XView from '../x/XView.vue'
-import CoopView from '../coop/CoopView.vue'
-import FestView from '../fest/FestView.vue'
 import Tabbar from '../../components/tabbar/Tabbar.vue'
 
-import { reactive, computed } from 'vue'
-import { BattleType, useData } from '../../utils/datas'
-import { getCurrentLocale, getLastBattleType, setLastBattleType } from '../../utils/storage'
+import { reactive, computed, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import { BattleType, updateScheduleAndExLocaleDatas, createDatas } from '../../utils/datas'
+import { getLastBattleType, setLastBattleType } from '../../utils/storage'
 import { useI18n } from 'vue-i18n'
-import { useInkI18n } from '../../utils/useI18n'
+import { changeSplatfont, Locale } from '../../utils/useI18n'
+import { getCurrentLocale } from '../../utils/storage'
 
-// 先切换环境
-const currentLocale = await getCurrentLocale()
+// 先获取首页数据和额外的语言数据
+const { datas, exLocale } = await updateScheduleAndExLocaleDatas()
+// 切换语言环境并加载额外语言系统
+let currentLocale: Locale
+if (import.meta.env.DEV) {
+    currentLocale = {
+        name: 'English',
+        code: 'en-US'
+    }
+} else {
+    currentLocale = await getCurrentLocale()
+}
 const { locale, setLocaleMessage, getLocaleMessage } = useI18n()
-const { changeSplatfont } = useInkI18n()
 if (locale.value !== currentLocale.code) {
     locale.value = currentLocale.code
 }
-if (currentLocale.code === 'zh-CN' || currentLocale.code === 'zh-TW') {
-    changeSplatfont(currentLocale.code)
-}
-// 请求数据
-const { initData } = useData()
-// 获取到当前语言的 ex 部分数据
-const localeData = await initData(currentLocale.code)
-// 更新到 i18n 里面去
+changeSplatfont(currentLocale.code)
+// 将额外语言加载
 setLocaleMessage(currentLocale.code, {
     ...getLocaleMessage(currentLocale.code),
-    splatnet: localeData
+    splatnet: exLocale
 })
+// 加载 datas 模型
+createDatas(datas)
 // 正常流程
-const { isFestTime, currentBattleTypes } = useData()
-const defaultType = isFestTime ? BattleType.Splatfest : BattleType.Bankara
-const battleType = await getLastBattleType(defaultType, currentBattleTypes)
+const battleType = await getLastBattleType()
+// 创建当前选中的index
 const state = reactive({ selectedType: battleType })
+// 计算属性
+const current = computed(() => {
+    switch (state.selectedType) {
+        case BattleType.Bankara:
+            return 'bankara'
+        case BattleType.Regular:
+            return 'regular'
+        case BattleType.X:
+            return 'x'
+        case BattleType.Splatfest:
+            return 'fest'
+        case BattleType.Salmonrun:
+            return 'coop'
+    }
+})
+
+// 获取路由
+const router = useRouter()
+router.push(`/main/${current.value}`)
 
 function changeTabbarType(type: BattleType) {
     state.selectedType = type
+    if (import.meta.env.DEV) {
+        return
+    }
     setLastBattleType(type)
 }
 
-const currentView = computed(() => {
-    switch (state.selectedType) {
-        case BattleType.Bankara:
-            return BankaraView
-        case BattleType.Regular:
-            return RegularView
-        case BattleType.X:
-            return XView
-        case BattleType.Splatfest:
-            return FestView
-        case BattleType.Salmonrun:
-            return CoopView
+watch(
+    () => state.selectedType,
+    () => {
+        router.push(`/main/${current.value}`)
     }
-})
+)
 </script>
-
-<style scoped></style>

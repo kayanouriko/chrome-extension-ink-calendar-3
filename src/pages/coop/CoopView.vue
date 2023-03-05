@@ -1,8 +1,9 @@
 <template>
     <div>
+        <img v-if="isBigRun" :src="bigRunBannerImage" />
+        <CoopCardNow :schedule="isBigRun ? bigRunSchedule : coopSchedules[0]" :is-big-run="isBigRun"></CoopCardNow>
         <template v-for="(schedule, index) in coopSchedules">
-            <CoopCardNow v-if="index == 0" :schedule="schedule"></CoopCardNow>
-            <CoopCard v-else :schedule="schedule"></CoopCard>
+            <CoopCard v-if="index != 0" :schedule="schedule" :is-big-run="isBigRun"></CoopCard>
         </template>
     </div>
 </template>
@@ -11,7 +12,7 @@
 import CoopCardNow from './CoopCardNow.vue'
 import CoopCard from './CoopCard.vue'
 
-import { useData } from '../../utils/datas'
+import { useDatas } from '../../utils/datas'
 
-const { coopSchedules } = useData()
+const { isBigRun, bigRunBannerImage, bigRunSchedule, coopSchedules } = useDatas()
 </script>

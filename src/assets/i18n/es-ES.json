@@ -24,12 +24,12 @@
         "until": "Hasta {time}"
     },
     "salmonrun": {
-        "weapons": "Armas asignadas"
+        "weapons": "Armas asignadas",
+        "bigrun": "Big Run"
     },
     "splatfest": {
         "name": "Combate tricolor",
-        "midterm-time": "Starts at {0}",
-        "all": "All splatfest info"
+        "midterm-time": "Starts at {0}"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

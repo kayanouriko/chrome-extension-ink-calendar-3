@@ -6,7 +6,7 @@
                 <img
                     class="w-12 h-12 p-2 group-hover/item:grayscale-0"
                     :class="selectedType == type ? 'grayscale-0' : 'grayscale'"
-                    :src="getTypeIcon(type)"
+                    :src="BattleType.getTypeIcon(type)"
                 />
             </div>
         </button>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { BattleType, useData } from '../../utils/datas'
+import { BattleType, useDatas } from '../../utils/datas'
 
 const { selectedType } = defineProps<{
     selectedType: BattleType
@@ -24,5 +24,5 @@ defineEmits<{
     (event: 'changeTabbarType', type: BattleType): void
 }>()
 
-const { currentBattleTypes, getTypeIcon } = useData()
+const { currentBattleTypes } = useDatas()
 </script>

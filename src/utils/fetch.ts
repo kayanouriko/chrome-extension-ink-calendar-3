@@ -1,6 +1,7 @@
 import { Data } from './datas'
 import { Splatnet } from './gearDatas'
 import { version } from '../manifest.json'
+import { getCurrentLocale } from './storage'
 
 const SCHEDULE_URL = 'https://splatoon3.ink/data/schedules.json'
 const GEAR_URL = 'https://splatoon3.ink/data/gear.json'
@@ -21,7 +22,8 @@ async function getGearData() {
     return response.json() as Promise<{ data: { gesotown: Splatnet } }>
 }
 
-async function getLocaleData(code: string) {
+async function getLocaleData() {
+    const code = (await getCurrentLocale()).code
     const response = await fetch(LOCALE_URL + code + '.json', { headers })
     return response.json()
 }

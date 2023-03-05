@@ -24,12 +24,12 @@
         "until": "Tot {time}"
     },
     "salmonrun": {
-        "weapons": "Beschikbare wapens"
+        "weapons": "Beschikbare wapens",
+        "bigrun": "Big Run"
     },
     "splatfest": {
         "name": "Driekleurenoorlog",
-        "midterm-time": "Starts at {0}",
-        "all": "All splatfest info"
+        "midterm-time": "Starts at {0}"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

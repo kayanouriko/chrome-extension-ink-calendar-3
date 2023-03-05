@@ -54,26 +54,47 @@ export interface GearPower {
     image: { url: string }
 }
 
-// TODO: 需要网络请求等操作
-let datas: Splatnet | null = null
-
-// 获取 pickup 的品牌
-export function getPickupBrand() {
-    return datas!.pickupBrand
-}
-
-export function getLimitedGears() {
-    return datas!.limitedGears
-}
-
 export async function updateGearDatas() {
+    if (import.meta.env.DEV) {
+        const { data } = await import('../assets/json/gear.json')
+        return data.gesotown as Splatnet
+    }
     // 先检测本地是否有数据
     const { shouldFetch, data } = await getGearDataFromLocal()
     if (shouldFetch) {
         const { data } = await getGearData()
-        datas = data.gesotown
         setGearDataToLocal(data.gesotown)
+        return data.gesotown
     } else {
-        datas = data!
+        return data!
     }
+}
+
+class GearDataManager {
+    datas: Splatnet
+    constructor(datas: Splatnet) {
+        this.datas = datas
+    }
+    // 获取 pickup 的品牌
+    get pickupBrand() {
+        return this.datas.pickupBrand
+    }
+
+    get limitedGears() {
+        return this.datas.limitedGears
+    }
+}
+
+// TODO: 需要网络请求等操作
+let dataManager: GearDataManager | null = null
+
+export function createDatas(datas: Splatnet) {
+    if (dataManager === null) {
+        dataManager = new GearDataManager(datas)
+    }
+    return dataManager
+}
+
+export function useDatas() {
+    return dataManager!
 }

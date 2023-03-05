@@ -24,12 +24,12 @@
         "until": "到 {time} 为止"
     },
     "salmonrun": {
-        "weapons": "发放武器"
+        "weapons": "发放武器",
+        "bigrun": "大型跑"
     },
     "splatfest": {
         "name": "三色夺宝比赛",
-        "midterm-time": "从 {0} 开始!",
-        "all": "所有祭典信息"
+        "midterm-time": "从 {0} 开始!"
     },
     "schedule": {
         "festtime": "祭典比赛举行中!",

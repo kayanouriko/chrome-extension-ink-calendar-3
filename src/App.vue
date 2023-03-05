@@ -1,17 +1,12 @@
 <template>
-    <Suspense>
-        <BaseView></BaseView>
-        <!-- <DemoView></DemoView> -->
-        <template #fallback>
-            <LodingView></LodingView>
-        </template>
-    </Suspense>
+    <router-view v-slot="{ Component }">
+        <KeepAlive>
+            <component :is="Component" />
+        </KeepAlive>
+    </router-view>
 </template>
 
-<script setup lang="ts">
-import LodingView from './components/loading/LodingView.vue'
-import BaseView from './pages/base/BaseView.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style>
 @import './assets/css/tailwindcss.css';
