@@ -4,17 +4,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueI18n from '@intlify/unplugin-vue-i18n/vite'
 
-// 输出 dist 相关
-import copy from 'rollup-plugin-copy'
-
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue(),
-        copy({
-            targets: [{ src: 'src/manifest.json', dest: 'dist' }],
-            hook: 'writeBundle'
-        }),
         vueI18n({
             include: resolve(__dirname, './src/assets/i18n/**')
         })

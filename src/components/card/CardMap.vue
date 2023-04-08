@@ -3,6 +3,7 @@
         <div class="flex flex-col items-center" v-for="(stage, index) in stages" :key="stage.id">
             <img
                 :class="index == 0 ? 'rounded-tl-lg rounded-bl-lg' : 'rounded-tr-lg rounded-br-lg'"
+                class="w-[164px] h-[82px]"
                 :src="stage.image.url"
             />
             <p

@@ -1,6 +1,5 @@
 import { Data } from './datas'
 import { Splatnet } from './gearDatas'
-import { version } from '../manifest.json'
 import { getCurrentLocale } from './storage'
 
 const SCHEDULE_URL = 'https://splatoon3.ink/data/schedules.json'
@@ -9,7 +8,7 @@ const LOCALE_URL = 'https://splatoon3.ink/data/locale/'
 
 // splatoon3ink data access 的要求, 最好附上联系方式的 User-Agent
 const headers = {
-    'User-Agent': `ChromeExtensionInkCalendar3/${version} kayanouriko@icloud.com`
+    'User-Agent': `ChromeExtensionInkCalendar3 kayanouriko@icloud.com`
 }
 
 async function getScheduleData() {

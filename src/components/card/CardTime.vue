@@ -16,4 +16,15 @@ const { time, isFirst } = defineProps<{
 
 const { getTime, isSameDay } = useDatas()
 const { shouldShowTime, showTime } = isSameDay(time, isFirst)
+let alarmable = false
+if (isFirst) {
+    // index === 0 的时候
+    if (shouldShowTime) {
+        // 说明该时间可以预约
+        alarmable = true
+    }
+} else {
+    // 其余的都可以预约
+    alarmable = true
+}
 </script>

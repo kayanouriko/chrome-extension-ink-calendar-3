@@ -69,6 +69,7 @@ export interface CoopSchedule {
         coopStage: CoopStage
         weapons: CoopWeapon[]
     }
+    __splatoon3ink_king_salmonid_guess?: string
 }
 
 // 赛程信息
@@ -313,6 +314,17 @@ class DataManager {
             return coopSchedule.regularSchedules.nodes
         } else {
             return coopSchedule.bigRunSchedules.nodes
+        }
+    }
+    // 获取鲑鱼跑 king 的 icon
+    getCoopKingIcon(name?: string) {
+        // 'Cohozuna' 横纲 | 'Horrorboros' 辰龙
+        switch (name) {
+            case 'Cohozuna':
+            case 'Horrorboros':
+                return `/images/king-${name}.png`
+            default:
+                return undefined
         }
     }
     // 返回对应规则的 icon
