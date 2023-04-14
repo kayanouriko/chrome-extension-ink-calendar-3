@@ -1,9 +1,9 @@
 <template>
     <div>
-        <img v-if="isBigRun" :src="bigRunBannerImage" />
-        <CoopCardNow :schedule="isBigRun ? bigRunSchedule : coopSchedules[0]" :is-big-run="isBigRun"></CoopCardNow>
+        <img v-if="isSpSchedule" :src="bigRunBannerImage" />
+        <CoopCardNow :schedule="showSchedule" :is-sp-schedule="isSpSchedule"></CoopCardNow>
         <template v-for="(schedule, index) in coopSchedules">
-            <CoopCard v-if="index != 0" :schedule="schedule" :is-big-run="isBigRun"></CoopCard>
+            <CoopCard v-if="index != 0" :schedule="schedule"></CoopCard>
         </template>
     </div>
 </template>
@@ -14,5 +14,8 @@ import CoopCard from './CoopCard.vue'
 
 import { useDatas } from '../../utils/datas'
 
-const { isBigRun, bigRunBannerImage, bigRunSchedule, coopSchedules } = useDatas()
+const { bigRunBannerImage, coopSchedules } = useDatas()
+// 通过里面排查, 大型跑和打工竞赛永远排在普通打工的前面
+const showSchedule = coopSchedules[0]
+const isSpSchedule = showSchedule.extType !== undefined
 </script>

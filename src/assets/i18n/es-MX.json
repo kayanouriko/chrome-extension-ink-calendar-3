@@ -25,7 +25,8 @@
     },
     "salmonrun": {
         "weapons": "Armas disponibles",
-        "bigrun": "Big Run"
+        "bigrun": "Big Run",
+        "eggstrawork": "Recolección extra"
     },
     "splatfest": {
         "name": "Territorial tricolor",

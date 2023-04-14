@@ -25,7 +25,8 @@
     },
     "salmonrun": {
         "weapons": "Табельное оружие",
-        "bigrun": "Big Run"
+        "bigrun": "Big Run",
+        "eggstrawork": "Икорный овертайм"
     },
     "splatfest": {
         "name": "Трехцветный бой",

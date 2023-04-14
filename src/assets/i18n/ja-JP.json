@@ -25,7 +25,8 @@
     },
     "salmonrun": {
         "weapons": "支給ブキ",
-        "bigrun": "ビッグラン"
+        "bigrun": "ビッグラン",
+        "eggstrawork": "バイトチームコンテスト"
     },
     "splatfest": {
         "name": "トリカラバトル",

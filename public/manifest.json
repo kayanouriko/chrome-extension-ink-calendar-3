@@ -1,7 +1,7 @@
 {
     "name": "Ink Calendar 3",
     "description": "Ink Calendar 3 features Splatoon 3 map rotations, Salmon Run schedules, SplatNet gear, and more.",
-    "version": "1.3.0",
+    "version": "1.4.1",
     "manifest_version": 3,
     "action": {
         "default_icon": {

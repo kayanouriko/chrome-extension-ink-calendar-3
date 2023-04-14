@@ -1,7 +1,7 @@
 {
     "name": "chrome-extension-ink-calendar-3",
     "private": true,
-    "version": "1.3.0",
+    "version": "1.4.1",
     "type": "module",
     "scripts": {
         "dev": "vite",

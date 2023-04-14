@@ -25,7 +25,8 @@
     },
     "salmonrun": {
         "weapons": "Verfügbare Waffen",
-        "bigrun": "Big Run"
+        "bigrun": "Big Run",
+        "eggstrawork": "Team-Wettkampf"
     },
     "splatfest": {
         "name": "Tricolor Turf War",

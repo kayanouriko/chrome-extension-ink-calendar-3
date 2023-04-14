@@ -1,9 +1,9 @@
 <template>
     <div class="border-l-8 w-full border-red-500 flex flex-col items-center font-splatoon2 pb-3">
-        <p class="text-xs px-3 mt-6" :class="isBigRun ? 'bg-[#B322FF]' : 'bg-red-500'">
-            {{ (isBigRun ? t('salmonrun.bigrun') : t('time.now')) + '!' }}
+        <p class="text-xs px-3 mt-6" :class="bgColor">
+            {{ (isSpSchedule ? t(`salmonrun.${schedule.extType}`) : t('time.now')) + '!' }}
         </p>
-        <p class="text-xs mt-1" :class="isBigRun ? 'text-[#B322FF]' : 'text-red-500'">{{ time }}</p>
+        <p class="text-xs mt-1" :class="textColor">{{ time }}</p>
         <img
             class="mt-3 mx-10 w-[calc(100%-5.0rem)] h-28 object-cover rounded-lg"
             :src="schedule.setting.coopStage.thumbnailImage.url"
@@ -27,7 +27,7 @@ import { useDatas } from '../../utils/datas'
 import '../../extension/date.extension'
 
 const { schedule } = defineProps<{
-    isBigRun: boolean
+    isSpSchedule: boolean
     schedule: CoopSchedule
 }>()
 
@@ -45,4 +45,13 @@ const time =
     ' ' +
     endTime.getHourMinTime()
 const kingIcon = getCoopKingIcon(schedule.__splatoon3ink_king_salmonid_guess)
+let bgColor = 'bg-red-500'
+let textColor = 'text-red-500'
+if (schedule.extType === 'bigrun') {
+    bgColor = 'bg-[#B322FF]'
+    textColor = 'text-[#B322FF]'
+} else if (schedule.extType === 'eggstrawork') {
+    bgColor = 'bg-[#D2B42F]'
+    textColor = 'text-[#D2B42F]'
+}
 </script>

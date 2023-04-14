@@ -27,6 +27,7 @@ export interface Data {
         bannerImage: { url: string } | null
         regularSchedules: { nodes: CoopSchedule[] }
         bigRunSchedules: { nodes: CoopSchedule[] }
+        teamContestSchedules: { nodes: CoopSchedule[] }
     }
     currentFest: Splatfest | null
 }
@@ -70,6 +71,8 @@ export interface CoopSchedule {
         weapons: CoopWeapon[]
     }
     __splatoon3ink_king_salmonid_guess?: string
+    // 这是额外的标注是否为大型跑和团队打工竞赛, 'bigrun' 大型跑 | 'eggstrawork' 团队打工竞赛
+    extType?: 'bigrun' | 'eggstrawork'
 }
 
 // 赛程信息
@@ -295,25 +298,43 @@ class DataManager {
         const schedules = this.datas.festSchedules.nodes
         return schedules.filter(s => s.festMatchSetting !== null)
     }
-    // 是不是大型跑
-    get isBigRun() {
-        return this.datas.coopGroupingSchedule.bigRunSchedules.nodes.length > 0
-    }
-    // 大型跑数据
-    get bigRunSchedule() {
-        return this.datas.coopGroupingSchedule.bigRunSchedules.nodes[0]
-    }
     // 获取大型跑的 banner 图
     get bigRunBannerImage() {
         return this.datas.coopGroupingSchedule.bannerImage?.url ?? ''
     }
     // 获取鲑鱼跑时间表的数组
     get coopSchedules() {
+        // todo: 大型跑和团队合作的数据需要额外处理
         const coopSchedule = this.datas.coopGroupingSchedule
-        if (coopSchedule.regularSchedules.nodes.length > 0) {
-            return coopSchedule.regularSchedules.nodes
-        } else {
-            return coopSchedule.bigRunSchedules.nodes
+        const schedules = coopSchedule.regularSchedules.nodes
+        if (coopSchedule.bigRunSchedules.nodes.length > 0) {
+            // 存在大型跑
+            const bigRunSchedule = coopSchedule.bigRunSchedules.nodes[0]
+            bigRunSchedule.extType = 'bigrun'
+            const insertIndex = schedules.findIndex(s => {
+                return new Date(bigRunSchedule.startTime) <= new Date(s.startTime)
+            })
+            schedules.splice(insertIndex, 0, bigRunSchedule)
+        } else if (coopSchedule.teamContestSchedules.nodes.length > 0) {
+            // 存在团队打工竞赛
+            const teamContestSchedule = coopSchedule.teamContestSchedules.nodes[0]
+            teamContestSchedule.extType = 'eggstrawork'
+            const insertIndex = schedules.findIndex(s => {
+                return new Date(teamContestSchedule.startTime) <= new Date(s.startTime)
+            })
+            schedules.splice(insertIndex, 0, teamContestSchedule)
+        }
+        return schedules
+    }
+    // 获取特殊模式的 icon
+    getCoopSpIcon(name?: 'bigrun' | 'eggstrawork') {
+        switch (name) {
+            case 'bigrun':
+                return '/images/coop_bigrun.svg'
+            case 'eggstrawork':
+                return '/images/coop_eggstra.svg'
+            default:
+                return undefined
         }
     }
     // 获取鲑鱼跑 king 的 icon
@@ -322,7 +343,7 @@ class DataManager {
         switch (name) {
             case 'Cohozuna':
             case 'Horrorboros':
-                return `/images/king-${name}.png`
+                return `/images/king_${name.toLowerCase()}.png`
             default:
                 return undefined
         }

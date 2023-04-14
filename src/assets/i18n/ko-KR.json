@@ -25,7 +25,8 @@
     },
     "salmonrun": {
         "weapons": "지급 무기",
-        "bigrun": "빅 런"
+        "bigrun": "빅 런",
+        "eggstrawork": "아르바이트 팀 콘테스트"
     },
     "splatfest": {
         "name": "트리컬러 배틀",
