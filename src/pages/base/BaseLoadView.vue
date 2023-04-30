@@ -2,7 +2,7 @@
     <Suspense>
         <BaseView></BaseView>
         <template #fallback>
-            <LodingView></LodingView>
+            <LodingView :is-fullscreen="true"></LodingView>
         </template>
     </Suspense>
 </template>

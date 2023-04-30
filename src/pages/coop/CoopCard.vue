@@ -8,7 +8,7 @@
         <!-- 特殊模式的标识 -->
         <div v-if="schedule.extType" class="mx-3 flex items-center space-x-1">
             <img class="w-5 h-5" :src="getCoopSpIcon(schedule.extType)" />
-            <p class="text-white font-splatoon2 text-sm" v-t="`salmonrun.${schedule.extType}`"></p>
+            <p class="text-white font-splatoon2 text-base" v-t="`salmonrun.${schedule.extType}`"></p>
         </div>
         <!-- 地图和武器 -->
         <div class="flex items-center mx-3 mt-2 space-x-3">
@@ -42,9 +42,5 @@ const { schedule } = defineProps<{
 const { getCoopKingIcon, getCoopSpIcon } = useDatas()
 const startTime = new Date(schedule.startTime)
 let time = startTime.getMonthDayTime() + ' ' + startTime.getHourMinTime()
-if (schedule.extType !== undefined) {
-    const endTime = new Date(schedule.endTime)
-    time += ' - ' + endTime.getMonthDayTime() + ' ' + endTime.getHourMinTime()
-}
 const kingIcon = getCoopKingIcon(schedule.__splatoon3ink_king_salmonid_guess)
 </script>

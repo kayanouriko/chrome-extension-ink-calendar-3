@@ -8,11 +8,12 @@
 
 <script setup lang="ts">
 import { Rule, useDatas } from '../../utils/datas'
+import { getRuleIcon } from '../../utils/tool'
 
 const { mode, rule } = defineProps<{
     rule: Rule
     mode?: string
 }>()
 
-const { getRuleIcon, getModeTitle } = useDatas()
+const { getModeTitle } = useDatas()
 </script>

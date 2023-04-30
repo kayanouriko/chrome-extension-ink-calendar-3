@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Fermer"
+    },
     "navbar": {
         "regular": "Match classique",
         "bankara": "Match anarchie",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Guerre tricolore",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Conques",
+        "votes": "Votes",
+        "open": "Ouvert",
+        "pro": "Défi",
+        "tricolor": "Match tricolore"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

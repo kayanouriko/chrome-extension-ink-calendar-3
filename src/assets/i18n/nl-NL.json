@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Sluiten"
+    },
     "navbar": {
         "regular": "Standaardgevecht",
         "bankara": "Chaosgevecht",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Driekleurenoorlog",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Prijsschelpen",
+        "votes": "Stemmen",
+        "open": "Open",
+        "pro": "Pro",
+        "tricolor": "Driekleurengevecht"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

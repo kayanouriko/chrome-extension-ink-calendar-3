@@ -348,24 +348,7 @@ class DataManager {
                 return undefined
         }
     }
-    // 返回对应规则的 icon
-    getRuleIcon(rule: string) {
-        // 'LOFT' 运塔 | 'CLAM' 蛤蜊 | 'AREA' 区域 | 'GOAL' 运鱼 | 'TURF_WAR' 涂地
-        switch (rule) {
-            case 'TURF_WAR':
-                return '/images/regular.svg'
-            case 'LOFT':
-                return '/images/yagura.svg'
-            case 'CLAM':
-                return '/images/asari.svg'
-            case 'AREA':
-                return '/images/area.svg'
-            case 'GOAL':
-                return '/images/hoko.svg'
-            default:
-                return ''
-        }
-    }
+
     // 返回真格模式的名字
     getModeTitle(mode: string) {
         // 'CHALLENGE' 挑战 和 'OPEN' 开放

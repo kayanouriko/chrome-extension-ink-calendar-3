@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Закрыть"
+    },
     "navbar": {
         "regular": "Бой салаг",
         "bankara": "Стихийный бой",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Трехцветный бой",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Раковины",
+        "votes": "Симпатии",
+        "open": "Открытый",
+        "pro": "Профи",
+        "tricolor": "Трехцветный бой"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

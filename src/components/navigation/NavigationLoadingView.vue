@@ -1,6 +1,6 @@
 <template>
     <Suspense>
-        <GearView></GearView>
+        <slot></slot>
         <template #fallback>
             <LodingView></LodingView>
         </template>
@@ -8,6 +8,5 @@
 </template>
 
 <script setup lang="ts">
-import GearView from './GearView.vue'
-import LodingView from '../../components/loading/LodingView.vue'
+import LodingView from '../loading/LodingView.vue'
 </script>

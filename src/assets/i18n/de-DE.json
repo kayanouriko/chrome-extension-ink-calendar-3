@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Schließen"
+    },
     "navbar": {
         "regular": "Standardkampf",
         "bankara": "Anarchie-Kampf",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Tricolor Turf War",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Tritonshörner",
+        "votes": "Votes",
+        "open": "Offen",
+        "pro": "Pro",
+        "tricolor": "Dreifarb-Kampf"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

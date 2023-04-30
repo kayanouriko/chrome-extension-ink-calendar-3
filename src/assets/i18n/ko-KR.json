@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "닫기"
+    },
     "navbar": {
         "regular": "레귤러 매치",
         "bankara": "카오폴리스 매치",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "트리컬러 배틀",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "소라고둥 획득률",
+        "votes": "득표율",
+        "open": "오픈",
+        "pro": "챌린지",
+        "tricolor": "트리컬러 어택"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

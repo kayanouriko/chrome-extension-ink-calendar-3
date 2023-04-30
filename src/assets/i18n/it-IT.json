@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Chiudi"
+    },
     "navbar": {
         "regular": "Partita amichevole",
         "bankara": "Partita anarchica",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Partita tricolore",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Conchiglie",
+        "votes": "Voti",
+        "open": "Aperta",
+        "pro": "Sfida",
+        "tricolor": "Attacco tricolore"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

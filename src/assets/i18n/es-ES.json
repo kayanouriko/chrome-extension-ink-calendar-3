@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Cerrar"
+    },
     "navbar": {
         "regular": "Combate amistoso",
         "bankara": "Combate caótico",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Combate tricolor",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Tasa de caracolas",
+        "votes": "Votos",
+        "open": "Informal",
+        "pro": "Formal",
+        "tricolor": "Combate tricolor"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

@@ -12,7 +12,11 @@
         "lib": ["ESNext", "DOM"],
         "skipLibCheck": true,
         "noEmit": true,
-        "types": ["@types/chrome", "@types/node"]
+        "types": ["@types/chrome", "@types/node"],
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["src/*"]
+        }
     },
     "include": [
         "src/**/*.ts",

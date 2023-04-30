@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-auto thin-scrollbar flex flex-col items-center">
+    <div class="overflow-auto thin-scrollbar h-full flex flex-col items-center">
         <!-- pickup -->
         <GearPickupView :pickup-brand="pickupBrand"></GearPickupView>
         <div class="divide-y divide-dotted divide-slate-500 mb-3 w-full">

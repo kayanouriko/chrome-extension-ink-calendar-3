@@ -55,6 +55,48 @@ export const locales = [
     { code: 'zh-TW', name: '中文(台灣)' }
 ]
 
+// 判断祭典所属的区域
+export function getFestRegionType(code: string): 'US' | 'EU' | 'JP' | 'AP' {
+    switch (code) {
+        case 'en-US':
+        case 'es-MX':
+        case 'fr-CA':
+            return 'US'
+        case 'en-GB':
+        case 'de-DE':
+        case 'es-ES':
+        case 'fr-FR':
+        case 'it-IT':
+        case 'nl-NL':
+        case 'ru-RU':
+            return 'EU'
+        case 'ja-JP':
+            return 'JP'
+        case 'ko-KR':
+        case 'zh-CN':
+        case 'zh-TW':
+            return 'AP'
+        default:
+            return 'JP'
+    }
+}
+
+// 判断真格所属的区域
+export function getXRegionType(code: string): 'takoroka' | 'tentatek' {
+    // Takoroka: Division covers players from Japan, Hong Kong, South Korea, Australia and New Zealand
+    // Tentatek: Division covers players from North America, South America, and Europe
+    // 正常来说, 亚洲为 Takoroka, 包含日本, 中文简体, 中文繁体, 韩国, 其他为 Tentatek
+    switch (code) {
+        case 'ja-JP':
+        case 'ko-KR':
+        case 'zh-CN':
+        case 'zh-TW':
+            return 'takoroka'
+        default:
+            return 'tentatek'
+    }
+}
+
 // 初始化 i18n 插件
 export function useInkI18n() {
     return createI18n({

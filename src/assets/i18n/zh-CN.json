@@ -1,9 +1,14 @@
 {
+    "normal": {
+        "close": "关闭"
+    },
     "navbar": {
         "regular": "一般比赛",
         "bankara": "蛮颓比赛",
         "x": "X比赛",
+        "xrank": "X排名",
         "splatfest": "祭典比赛",
+        "splatfestStats": "祭典记录",
         "salmonrun": "鲑鱼跑"
     },
     "option": {
@@ -29,8 +34,15 @@
         "eggstrawork": "团队打工竞赛"
     },
     "splatfest": {
+        "title": "祭典",
+        "subTitle": "至今为止的祭典",
         "name": "三色夺宝比赛",
-        "midterm-time": "从 {0} 开始!"
+        "midterm-time": "从 {0} 开始!",
+        "conchshells": "法螺获得率",
+        "votes": "得票率",
+        "open": "开放",
+        "pro": "挑战",
+        "tricolor": "三色夺宝攻击"
     },
     "schedule": {
         "festtime": "祭典比赛举行中!",
@@ -44,5 +56,13 @@
         "pickup": "精选",
         "tip": "每经过4小时, 商品就会发生变化",
         "tip1": "在此商店中, 可以获取附加的装备能力与平时不同的特殊装备"
+    },
+    "xrank": {
+        "title": "X排名",
+        "open": "举行中!",
+        "topPlayer": "顶级玩家",
+        "view": "查看排名",
+        "xpower": "X战力",
+        "topWeapon": "顶级武器玩家"
     }
 }

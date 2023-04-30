@@ -7,6 +7,9 @@ import XView from '../pages/x/XView.vue'
 import CoopView from '../pages/coop/CoopView.vue'
 import FestView from '../pages/fest/FestView.vue'
 import GearBaseView from '../pages/gear/GearBaseView.vue'
+import MenuView from '../pages/menu/MenuView.vue'
+import AllFestBaseView from '../pages/allFest/AllFestBaseView.vue'
+import AllXBaseView from '../pages/allX/AllXBaseView.vue'
 
 const routes = [
     {
@@ -40,8 +43,20 @@ const routes = [
         ]
     },
     {
+        path: '/menu',
+        component: MenuView
+    },
+    {
         path: '/gear',
         component: GearBaseView
+    },
+    {
+        path: '/x',
+        component: AllXBaseView
+    },
+    {
+        path: '/splatfest',
+        component: AllFestBaseView
     }
 ]
 

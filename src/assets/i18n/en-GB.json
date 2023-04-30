@@ -1,4 +1,7 @@
 {
+    "normal": {
+        "close": "Close"
+    },
     "navbar": {
         "regular": "Regular Battle",
         "bankara": "Anarchy Battle",
@@ -30,7 +33,12 @@
     },
     "splatfest": {
         "name": "Tricolor Turf War",
-        "midterm-time": "Starts at {0}"
+        "midterm-time": "Starts at {0}",
+        "conchshells": "Conch Shells",
+        "votes": "Votes",
+        "open": "Open",
+        "pro": "Pro",
+        "tricolor": "Tricolor Battle"
     },
     "schedule": {
         "festtime": "Splatfest battle in progress!",

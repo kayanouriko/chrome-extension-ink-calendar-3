@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from '../../components/navbar/Navbar.vue'
+import Navbar from './BaseNavbar.vue'
 import Tabbar from '../../components/tabbar/Tabbar.vue'
 
 import { reactive, computed, watch } from 'vue'

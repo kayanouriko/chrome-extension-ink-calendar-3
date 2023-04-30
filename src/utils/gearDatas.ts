@@ -85,7 +85,6 @@ class GearDataManager {
     }
 }
 
-// TODO: 需要网络请求等操作
 let dataManager: GearDataManager | null = null
 
 export function createDatas(datas: Splatnet) {
