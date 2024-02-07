@@ -1,53 +1,52 @@
-import { fileURLToPath, URL } from 'url'
 import { resolve } from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig, Rollup } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueI18n from '@intlify/unplugin-vue-i18n/vite'
+import unocss from 'unocss/vite'
+import { vitePluginFakeServer } from 'vite-plugin-fake-server'
+
+// 各种资源的整理
+const assetFileNames = (chunkInfo: Rollup.PreRenderedAsset) => {
+    let ext = chunkInfo.name.split('.').pop()
+    // 将各种图片, 字体分别归为一类, 其余的作为一类
+    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+        ext = 'images'
+    } else if (/woff|woff2/i.test(ext)) {
+        ext = 'fonts'
+    }
+    return `assets/${ext}/[name].[hash][extname]`
+}
+const fileNames = 'assets/js/[name].[hash].js'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [
-        vue(),
-        vueI18n({
-            include: resolve(__dirname, './src/assets/i18n/**')
-        })
-    ],
+    define: {
+        // vue-i18n csp issue fixed
+        // https://vue-i18n.intlify.dev/guide/advanced/optimization#jit-compilation
+        // https://github.com/intlify/vue-i18n-next/issues/1457
+        __INTLIFY_JIT_COMPILATION__: true
+    },
+    plugins: [vue(), unocss(), vitePluginFakeServer()],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
-        }
-    },
-    server: {
-        proxy: {
-            '/api': {
-                target: 'https://splatoon3.ink',
-                changeOrigin: true,
-                rewrite: path => path.replace(/^\/api/, '')
-            }
+            '@': resolve(__dirname, './src'),
+            '@assets': resolve(__dirname, './src/assets'),
+            '@common': resolve(__dirname, './src/common'),
+            '@popup': resolve(__dirname, './src/popup'),
+            '@option': resolve(__dirname, './src/option')
         }
     },
     build: {
+        emptyOutDir: true,
         rollupOptions: {
             input: {
-                main: resolve(__dirname, 'index.html'),
-                option: resolve(__dirname, 'option/index.html')
+                popup: resolve(__dirname, 'popup.html'),
+                option: resolve(__dirname, 'option.html')
             },
             output: {
-                assetFileNames: assetInfo => {
-                    let extType = assetInfo.name.split('.').at(1)
-                    if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
-                        // 图片的和 public 的位置合并在一起
-                        return `images/[name].[hash][extname]`
-                    } else if (/woff|woff2/i.test(extType)) {
-                        extType = 'fonts'
-                    }
-                    return `assets/${extType}/[name].[hash][extname]`
-                },
-                chunkFileNames: 'assets/js/[name].[hash].js',
-                entryFileNames: 'assets/js/[name].[hash].js'
+                assetFileNames,
+                chunkFileNames: fileNames,
+                entryFileNames: fileNames
             }
-        },
-        emptyOutDir: true,
-        chunkSizeWarningLimit: 1000
+        }
     }
 })

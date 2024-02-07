@@ -1,68 +1,67 @@
 {
-    "normal": {
-        "close": "關閉"
+  "normal": {
+    "reload": "重新載入",
+    "close": "關閉"
+  },
+  "navbar": {
+    "main": "首頁",
+    "regular": "一般比賽",
+    "bankara": "蠻頹比賽",
+    "x": "X比賽",
+    "xrank": "X排名",
+    "splatfest": "祭典比賽",
+    "splatfestStats": "祭典記錄",
+    "salmonrun": "SALMON RUN",
+    "events": "活動比賽",
+    "home": "更多選項"
+  },
+  "option": {
+    "title": "選項",
+    "general": {
+      "title": "一般",
+      "preferred-languages": "慣用語言",
+      "preferred-languages-tip": "擴充套件會儘可能以你慣用的語言顯示網站文字.",
+      "region-codes": "伺服器地區代碼"
     },
-    "navbar": {
-        "regular": "一般比賽",
-        "bankara": "蠻頹比賽",
-        "x": "X比賽",
-        "xrank": "X排名",
-        "splatfest": "祭典比賽",
-        "splatfestStats": "祭典記錄",
-        "salmonrun": "SALMON RUN"
-    },
-    "option": {
-        "title": "選項",
-        "general": {
-            "title": "一般",
-            "preferred-languages": "慣用語言",
-            "preferred-languages-tip": "擴充套件會儘可能以你慣用的語言顯示網站文字."
-        },
-        "about": {
-            "title": "關於",
-            "thanks": "致謝"
-        }
-    },
-    "time": {
-        "now": "開放",
-        "next": "下次",
-        "until": "到 {time} 為止"
-    },
-    "salmonrun": {
-        "weapons": "派發武器",
-        "bigrun": "大型跑",
-        "eggstrawork": "團隊打工競賽"
-    },
-    "splatfest": {
-        "title": "祭典",
-        "subTitle": "至今為止的祭典",
-        "name": "三色奪寶對戰",
-        "midterm-time": "從 {0} 開始!",
-        "conchshells": "法螺獲得率",
-        "votes": "得票率",
-        "open": "開放",
-        "pro": "挑戰",
-        "tricolor": "三色奪寶攻擊"
-    },
-    "schedule": {
-        "festtime": "祭典比賽舉行中!",
-        "series": "挑戰",
-        "open": "開放"
-    },
-    "splatnet-shop": {
-        "title": "魷魚鬚商城",
-        "sale": "目前販售的裝備",
-        "dailydrop": "本日精選",
-        "pickup": "精選",
-        "tip": "商品陣容每隔4小時便會更換",
-        "tip1": "在此商店中可以獲取附加裝備能力與平時不同的特殊裝備"
-    },
-    "xrank": {
-        "title": "X排名",
-        "open": "舉行中!!",
-        "topPlayer": "頂尖玩家",
-        "view": "查看排名",
-        "xpower": "X戰力",
-        "topWeapon": "頂尖武器玩家"
+    "about": {
+      "title": "關於",
+      "thanks": "致謝"
     }
+  },
+  "time": {
+    "now": "開放",
+    "open": "舉行中!!",
+    "next": "下次",
+    "until": "到 {time} 為止",
+    "uncoming": "即將舉行"
+  },
+  "salmonrun": {
+    "weapons": "派發武器",
+    "bigrun": "大型跑",
+    "eggstrawork": "團隊打工競賽"
+  },
+  "splatfest": {
+    "title": "祭典",
+    "subTitle": "至今為止的祭典",
+    "name": "三色奪寶對戰",
+    "midterm-time": "從 {0} 開始!",
+    "conchshells": "法螺獲得率",
+    "votes": "得票率",
+    "open": "開放",
+    "pro": "挑戰",
+    "tricolor": "三色奪寶攻擊"
+  },
+  "schedule": {
+    "festtime": "祭典比賽舉行中!",
+    "series": "挑戰",
+    "open": "開放"
+  },
+  "splatnet-shop": {
+    "title": "魷魚鬚商城",
+    "sale": "目前販售的裝備",
+    "dailydrop": "本日精選",
+    "pickup": "精選",
+    "tip": "商品陣容每隔4小時便會更換",
+    "tip1": "在此商店中可以獲取附加裝備能力與平時不同的特殊裝備"
+  }
 }

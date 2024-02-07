@@ -1,68 +1,66 @@
 {
-    "normal": {
-        "close": "閉じる"
+  "normal": {
+    "reload": "再読み込み",
+    "close": "閉じる"
+  },
+  "navbar": {
+    "main": "ホーム",
+    "regular": "レギュラーマッチ",
+    "bankara": "バンカラマッチ",
+    "x": "Xマッチ",
+    "xrank": "Xランキング",
+    "splatfest": "フェスマッチ",
+    "splatfestStats": "フェスのきろく",
+    "salmonrun": "サーモンラン",
+    "events": "イベントマッチ",
+    "home": "\nその他のオプション"
+  },
+  "option": {
+    "title": "オプション",
+    "general": {
+      "title": "全般",
+      "preferred-languages": "優先言語",
+      "preferred-languages-tip": "可能な場合、設定した言語でウェブサイトのテキストを表示します。"
     },
-    "navbar": {
-        "regular": "レギュラーマッチ",
-        "bankara": "バンカラマッチ",
-        "x": "Xマッチ",
-        "xrank": "Xランキング",
-        "splatfest": "フェスマッチ",
-        "splatfestStats": "フェスのきろく",
-        "salmonrun": "サーモンラン"
-    },
-    "option": {
-        "title": "オプション",
-        "general": {
-            "title": "全般",
-            "preferred-languages": "優先言語",
-            "preferred-languages-tip": "可能な場合、設定した言語でウェブサイトのテキストを表示します。"
-        },
-        "about": {
-            "title": "説明",
-            "thanks": "ありがとう"
-        }
-    },
-    "time": {
-        "now": "オープン",
-        "next": "つぎ",
-        "until": "{time} まで"
-    },
-    "salmonrun": {
-        "weapons": "支給ブキ",
-        "bigrun": "ビッグラン",
-        "eggstrawork": "バイトチームコンテスト"
-    },
-    "splatfest": {
-        "title": "フェス",
-        "subTitle": "これまでのフェス",
-        "name": "トリカラバトル",
-        "midterm-time": "{0} から",
-        "conchshells": "ホラガイ獲得率",
-        "votes": "得票率",
-        "open": "オープン",
-        "pro": "チャレンジ",
-        "tricolor": "トリカラアタック"
-    },
-    "schedule": {
-        "festtime": "フェスマッチ進行中!",
-        "series": "チャレンジ",
-        "open": "オープン"
-    },
-    "splatnet-shop": {
-        "title": "ゲソタウン",
-        "sale": "ただいま販売中のギア",
-        "dailydrop": "本日のピックアップ",
-        "pickup": "ピックアップ",
-        "tip": "商品は4時間ごとに入れ替わります",
-        "tip1": "ふだんとは違うギアパワーがついたトクベツなギアが手に入るショップ"
-    },
-    "xrank": {
-        "title": "Xランキング",
-        "open": "開催中!!",
-        "topPlayer": "トッププレイヤー",
-        "view": "ランキングを見る",
-        "xpower": "Xパワー",
-        "topWeapon": "ブキトップ プレイヤー"
+    "about": {
+      "title": "説明",
+      "thanks": "ありがとう"
     }
+  },
+  "time": {
+    "now": "オープン",
+    "open": "開催中!!",
+    "next": "つぎ",
+    "until": "{time} まで",
+    "uncoming": "まもなく"
+  },
+  "salmonrun": {
+    "weapons": "支給ブキ",
+    "bigrun": "ビッグラン",
+    "eggstrawork": "バイトチームコンテスト"
+  },
+  "splatfest": {
+    "title": "フェス",
+    "subTitle": "これまでのフェス",
+    "name": "トリカラバトル",
+    "midterm-time": "{0} から",
+    "conchshells": "ホラガイ獲得率",
+    "votes": "得票率",
+    "open": "オープン",
+    "pro": "チャレンジ",
+    "tricolor": "トリカラアタック"
+  },
+  "schedule": {
+    "festtime": "フェスマッチ進行中!",
+    "series": "チャレンジ",
+    "open": "オープン"
+  },
+  "splatnet-shop": {
+    "title": "ゲソタウン",
+    "sale": "ただいま販売中のギア",
+    "dailydrop": "本日のピックアップ",
+    "pickup": "ピックアップ",
+    "tip": "商品は4時間ごとに入れ替わります",
+    "tip1": "ふだんとは違うギアパワーがついたトクベツなギアが手に入るショップ"
+  }
 }

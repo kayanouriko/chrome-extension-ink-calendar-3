@@ -1,56 +1,62 @@
 {
-    "normal": {
-        "close": "Schließen"
+  "normal": {
+    "reload": "Neu laden",
+    "close": "Schließen"
+  },
+  "navbar": {
+    "main": "Startseite",
+    "regular": "Standardkampf",
+    "bankara": "Anarchie-Kampf",
+    "x": "X-Kampf",
+    "splatfest": "Splatfest-Kampf",
+    "salmonrun": "Salmon Run",
+    "events": "Event-Kämpfe",
+    "home": "Weitere Optionen"
+  },
+  "option": {
+    "title": "Optionen",
+    "general": {
+      "title": "Allgemein",
+      "preferred-languages": "Bevorzugte Sprachen",
+      "preferred-languages-tip": "Sofern dies möglich ist, wird Text auf Websites in Ihrer bevorzugten Sprache angezeigt."
     },
-    "navbar": {
-        "regular": "Standardkampf",
-        "bankara": "Anarchie-Kampf",
-        "x": "X-Kampf",
-        "splatfest": "Splatfest-Kampf",
-        "salmonrun": "Salmon Run"
-    },
-    "option": {
-        "title": "Optionen",
-        "general": {
-            "title": "Allgemein",
-            "preferred-languages": "Bevorzugte Sprachen",
-            "preferred-languages-tip": "Sofern dies möglich ist, wird Text auf Websites in Ihrer bevorzugten Sprache angezeigt."
-        },
-        "about": {
-            "title": "Über",
-            "thanks": "Danksagungen"
-        }
-    },
-    "time": {
-        "now": "Aktuell",
-        "next": "Demnächst",
-        "until": "Bis {time}"
-    },
-    "salmonrun": {
-        "weapons": "Verfügbare Waffen",
-        "bigrun": "Big Run",
-        "eggstrawork": "Team-Wettkampf"
-    },
-    "splatfest": {
-        "name": "Tricolor Turf War",
-        "midterm-time": "Starts at {0}",
-        "conchshells": "Tritonshörner",
-        "votes": "Votes",
-        "open": "Offen",
-        "pro": "Pro",
-        "tricolor": "Dreifarb-Kampf"
-    },
-    "schedule": {
-        "festtime": "Splatfest battle in progress!",
-        "series": "Serie",
-        "open": "Offen"
-    },
-    "splatnet-shop": {
-        "title": "SplatNet Shop",
-        "sale": "Jetzt im Angebot",
-        "dailydrop": "Heutige Auswahl",
-        "pickup": "Heutige Auswahl",
-        "tip": "Stock updated every four hours.",
-        "tip1": "A shop with SplatNet-exclusive gear offering different abilities!"
+    "about": {
+      "title": "Über",
+      "thanks": "Danksagungen"
     }
+  },
+  "time": {
+    "now": "Aktuell",
+    "next": "Demnächst",
+    "until": "Bis {time}",
+    "uncoming": "Bevorstehend",
+    "open": ""
+  },
+  "salmonrun": {
+    "weapons": "Verfügbare Waffen",
+    "bigrun": "Big Run",
+    "eggstrawork": "Team-Wettkampf"
+  },
+  "splatfest": {
+    "name": "Tricolor Turf War",
+    "midterm-time": "Starts at {0}",
+    "conchshells": "Tritonshörner",
+    "votes": "Votes",
+    "open": "Offen",
+    "pro": "Pro",
+    "tricolor": "Dreifarb-Kampf"
+  },
+  "schedule": {
+    "festtime": "Splatfest battle in progress!",
+    "series": "Serie",
+    "open": "Offen"
+  },
+  "splatnet-shop": {
+    "title": "SplatNet Shop",
+    "sale": "Jetzt im Angebot",
+    "dailydrop": "Heutige Auswahl",
+    "pickup": "Heutige Auswahl",
+    "tip": "Stock updated every four hours.",
+    "tip1": "A shop with SplatNet-exclusive gear offering different abilities!"
+  }
 }

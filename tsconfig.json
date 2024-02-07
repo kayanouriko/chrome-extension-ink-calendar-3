@@ -3,30 +3,31 @@
         "target": "ESNext",
         "useDefineForClassFields": true,
         "module": "ESNext",
-        "moduleResolution": "Node",
-        "strict": true,
-        "jsx": "preserve",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "esModuleInterop": true,
-        "lib": ["ESNext", "DOM"],
-        "skipLibCheck": true,
         "noEmit": true,
-        "types": ["@types/chrome", "@types/node"],
-        "baseUrl": "./",
+        "jsx": "preserve",
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["./src/*"],
+            "@assets/*": ["./src/assets/*"],
+            "@common/*": ["./src/common/*"],
+            "@popup/*": ["./src/popup/*"],
+            "@option/*": ["./src/option/*"]
         }
     },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
-        "option/src/**/*.ts",
-        "option/src/**/*.d.ts",
-        "option/src/**/*.tsx",
-        "option/src/**/*.vue"
-    ],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "fake/**/*.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
