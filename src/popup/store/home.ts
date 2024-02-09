@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { useFestSchedulesStore } from './schedules'
 import { useSchedulesDataStore, useI18nDataStore, useFestivalsDataStore } from './download'
 import { useStorageStore } from '@common/chrome/storage'
 
@@ -17,12 +16,14 @@ export const useHomeStore = defineStore('home', () => {
             // 先获取缓存的数据
             await useStorageStore().update()
             // 开始更新
-            await Promise.all([useSchedulesDataStore().update(), useI18nDataStore().update()])
-            // 更新完成的时候, 判断祭典为预热阶段才需要更新, 则需要更新祭典的数据
-            if (useFestSchedulesStore().currentFest?.state === 'SCHEDULED') {
-                // 需要更新祭典
-                await useFestivalsDataStore().update()
-            }
+            // 这里请求三个数据源, 日程, 国际化, 祭典
+            // 其中国际化和祭典是过度请求, 国际化由于不知道文本的更新间隔, 而祭典是在预热阶段在日程数据源中反应过于缓慢, 所以这两个随着日程数据源的更新而更新
+            // 日程的更新频率最少也为 2 个小时, 所以请求还不算频繁
+            await Promise.all([
+                useSchedulesDataStore().update(),
+                useI18nDataStore().update(),
+                useFestivalsDataStore().update()
+            ])
         } catch (error) {
             console.log(error)
             isError.value = true

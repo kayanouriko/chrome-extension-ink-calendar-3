@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useStorageStore } from '@common/chrome/storage'
 import { useFestivalsDataStore } from './download'
-import { getDurationTime, festivalState } from './utils'
+import { getDurationTime, festivalState, FestivalState } from './utils'
 
 const regionType = z.enum(['US', 'EU', 'JP', 'AP'])
 // 支持的区域代码
@@ -49,10 +49,12 @@ const festivalRecord = z
         image: z.object({ url: z.string() }).transform(({ url }) => url),
         teams: z.array(festivalTeam)
     })
-    .transform(({ startTime, endTime, ...others }) => ({
+    .transform(({ state, startTime, endTime, ...others }) => ({
         startTime,
         endTime,
+        state,
         ...others,
+        stateText: getFestStateText(state),
         durationTime: getDurationTime(new Date(startTime), new Date(endTime))
     }))
 
@@ -145,5 +147,18 @@ export function getFestRegionType(code: string): RegionType {
             return 'AP'
         default:
             return 'JP'
+    }
+}
+
+// 获取祭典状态的国际化文本
+function getFestStateText(state: FestivalState) {
+    switch (state) {
+        case 'SCHEDULED':
+            return 'time.uncoming'
+        case 'FIRST_HALF':
+        case 'SECOND_HALF':
+            return 'time.now'
+        default:
+            return ''
     }
 }

@@ -163,7 +163,14 @@ function getAppCurrentLanguageCode(cData: any) {
     // 没找到支持的语言
     // 不存在同步数据或者缓存的语言不再支持, 则获取浏览器语言, 如果支持返回当前语言, 否则返回默认语言
     const languageTag = chrome.i18n.getUILanguage()
-    const { code } = appSupportedLocales.find(l => l.code === languageTag) ?? appDefaultLocale
+    const { code } =
+        appSupportedLocales.find(l => {
+            // getUILanguage 返回的不是标准的 language tag, 单语言比如 ru-RU 只返回 ru
+            if (l.code === languageTag) return true
+            // 上面的语言不支持则尝试判断是不是以字段开头
+            if (l.code.startsWith(languageTag)) return true
+            return false
+        }) ?? appDefaultLocale
     // 存储数据
     write({ [localeKey]: code }, 'sync').then(() => console.log('已缓存语言: ' + code))
     return code

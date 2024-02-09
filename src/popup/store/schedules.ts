@@ -3,14 +3,7 @@ import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { useSchedulesDataStore } from './download'
 import { useFestivalsStore } from './festivals'
-import {
-    getYearMonthDayTime,
-    getHourMinTime,
-    getMonthDayTime,
-    getDurationTime,
-    festivalState,
-    FestivalState
-} from './utils'
+import { getYearMonthDayTime, getHourMinTime, getMonthDayTime, getDurationTime, festivalState } from './utils'
 
 // 'LOFT' 运塔 | 'CLAM' 蛤蜊 | 'AREA' 区域 | 'GOAL' 运鱼 | 'TURF_WAR' 涂地
 const ruleType = z.enum(['TURF_WAR', 'LOFT', 'CLAM', 'AREA', 'GOAL'])
@@ -250,7 +243,6 @@ const currentFest = z.union([
             ...others,
             durationTime: getDurationTime(new Date(startTime), new Date(endTime)),
             upcomingTime: getYearMonthDayTime(new Date(startTime)),
-            stateText: getFestStateText(state),
             midtermTime: (() =>
                 getYearMonthDayTime(new Date(midtermTime)) + ' ' + getHourMinTime(new Date(midtermTime)))()
         }))
@@ -376,7 +368,7 @@ export const useCoopSchedulesStore = defineStore('schedules/coop', () => {
 
 // 祭典
 export const useFestSchedulesStore = defineStore('schedules/fest', () => {
-    // 注意, 这里的 currentFest 取 useSchedulesDataStore data 里面 currentFest 的值, 因为我们祭典不是预热状态不会请求 useFestivalsStore 的数据, 所有的关于祭典的状态都由 currentFest 来控制.
+    // 注意, 所有的关于祭典的状态都由 currentFestRecord 来控制, 因为 currentFest 的数据过于滞后.
     const currentFest = computed(() => useSchedulesDataStore().data?.currentFest)
     const currentFestRecord = computed(() => useFestivalsStore().current)
     // 由于要拿祭典的时间作为更新时间, 所以这里才筛选出 matches 为 null 的日程
@@ -387,18 +379,6 @@ export const useFestSchedulesStore = defineStore('schedules/fest', () => {
 })
 
 //========== 辅助工具类 ==========
-// 获取祭典状态的国际化文本
-function getFestStateText(state: FestivalState) {
-    switch (state) {
-        case 'SCHEDULED':
-            return 'time.uncoming'
-        case 'FIRST_HALF':
-        case 'SECOND_HALF':
-            return 'time.now'
-        default:
-            return ''
-    }
-}
 
 // 如果是 0 点, 则需要显示年月日的黄色标题
 function isEarlyHour(startTime: string) {

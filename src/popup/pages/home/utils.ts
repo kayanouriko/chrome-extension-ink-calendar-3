@@ -45,7 +45,7 @@ const coopItem = {
 }
 
 export const useTabbarStore = defineStore('tabbar', () => {
-    const current = computed(() => useFestSchedulesStore().currentFest)
+    const current = computed(() => useFestSchedulesStore().currentFestRecord)
     const schedules = computed(() => useRegularSchedulesStore().schedules)
     const tabbarItems = computed<TabbarItem[]>(() => {
         const tabbarItems: TabbarItem[] = []

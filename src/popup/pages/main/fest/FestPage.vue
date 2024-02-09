@@ -1,17 +1,14 @@
 <template>
-    <div v-if="currentFest" border="l-8 red-5" flex="~ col">
+    <div v-if="currentFestRecord" border="l-8 red-5" flex="~ col">
         <div pt-4 flex="~ col" items-center>
-            <TagView mt-2 :title="t(currentFest.stateText)" :bg-color="'bg-fest-primary'" />
+            <TagView :title="t(currentFestRecord.stateText)" :bg-color="'bg-fest-primary'" />
             <p mt-2 text-sm text-fest-primary>
-                {{ currentFest.durationTime ?? '' }}
+                {{ currentFestRecord.durationTime ?? '' }}
             </p>
         </div>
-        <FestUpcomingView
-            v-if="currentFest.state === 'SCHEDULED' && currentFestRecord"
-            :festivalRecord="currentFestRecord"
-        />
+        <FestUpcomingView v-if="currentFestRecord.state === 'SCHEDULED'" :festivalRecord="currentFestRecord" />
         <FestActiveView
-            v-else-if="currentFest.state === 'FIRST_HALF' || currentFest.state === 'SECOND_HALF'"
+            v-else-if="currentFest && (currentFest.state === 'FIRST_HALF' || currentFest.state === 'SECOND_HALF')"
             :midterm-time="currentFest.midtermTime"
             :stage="currentFest.tricolorStage"
         />

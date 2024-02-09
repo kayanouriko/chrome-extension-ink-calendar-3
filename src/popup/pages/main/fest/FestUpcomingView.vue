@@ -1,5 +1,5 @@
 <template>
-    <div flex="~ col center">
+    <div px-2 flex="~ col center">
         <p mt-2 text-center font-splatoon-title>
             {{ t(`splatnet.festivals.${festivalRecord.__splatoon3ink_id}.title`, festivalRecord.title) }}
         </p>

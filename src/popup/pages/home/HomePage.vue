@@ -35,6 +35,7 @@ const selectedItem = shallowRef<TabbarItem | undefined>(undefined)
 function didChangeTabbarItem(item: TabbarItem) {
     selectedItem.value = item
     router.push(`/home/${item.key}`)
+    if (import.meta.env.DEV) return
     useStorageStore().setAppCurrentSelectedItemKey(item.key)
 }
 
