@@ -1,68 +1,69 @@
 {
-  "normal": {
-    "reload": "重新加载",
-    "close": "关闭"
-  },
-  "navbar": {
-    "main": "主页",
-    "regular": "一般比赛",
-    "bankara": "蛮颓比赛",
-    "x": "X比赛",
-    "xrank": "X排名",
-    "splatfest": "祭典比赛",
-    "splatfestStats": "祭典记录",
-    "salmonrun": "鲑鱼跑",
-    "events": "活动比赛",
-    "home": "更多选项"
-  },
-  "option": {
-    "title": "选项",
-    "general": {
-      "title": "常规",
-      "preferred-languages": "首选语言",
-      "preferred-languages-tip": "扩展会尽可能以您的首选语言显示内容",
-      "region-codes": "服务器区域代码",
-      "region-codes-tip": "US：美洲、澳大利亚、新西兰<br />EU： 欧洲<br />JP： 日本<br />AP：香港、韩国（亚太地区）"
+    "normal": {
+        "reload": "重新加载",
+        "close": "关闭"
     },
-    "about": {
-      "title": "关于",
-      "thanks": "致谢"
+    "navbar": {
+        "main": "主页",
+        "regular": "一般比赛",
+        "bankara": "蛮颓比赛",
+        "x": "X比赛",
+        "xrank": "X排名",
+        "splatfest": "祭典比赛",
+        "splatfestStats": "祭典记录",
+        "salmonrun": "鲑鱼跑",
+        "events": "活动比赛",
+        "home": "更多选项"
+    },
+    "option": {
+        "title": "选项",
+        "general": {
+            "title": "常规",
+            "preferred-languages": "首选语言",
+            "preferred-languages-tip": "扩展会尽可能以您的首选语言显示内容",
+            "region-codes": "服务器区域代码",
+            "region-codes-tip": "US：美洲、澳大利亚、新西兰<br />EU： 欧洲<br />JP： 日本<br />AP：香港、韩国（亚太地区）"
+        },
+        "about": {
+            "title": "关于",
+            "thanks": "致谢"
+        }
+    },
+    "time": {
+        "now": "开放",
+        "uncoming": "即将举行",
+        "open": "举行中!!",
+        "next": "下次",
+        "until": "到 {time} 为止"
+    },
+    "salmonrun": {
+        "weapons": "发放武器",
+        "bigrun": "大型跑",
+        "eggstrawork": "团队打工竞赛"
+    },
+    "splatfest": {
+        "title": "祭典",
+        "subTitle": "至今为止的祭典",
+        "name": "三色夺宝比赛",
+        "midterm-time": "从 {0} 开始!",
+        "conchshells": "法螺获得率",
+        "result": "结算",
+        "votes": "得票率",
+        "open": "开放",
+        "pro": "挑战",
+        "tricolor": "三色夺宝攻击"
+    },
+    "schedule": {
+        "festtime": "祭典比赛举行中!",
+        "series": "挑战",
+        "open": "开放"
+    },
+    "splatnet-shop": {
+        "title": "鱿鱼须商城",
+        "sale": "目前贩卖的装备",
+        "dailydrop": "今日精选",
+        "pickup": "精选",
+        "tip": "每经过4小时, 商品就会发生变化",
+        "tip1": "在此商店中, 可以获取附加的装备能力与平时不同的特殊装备"
     }
-  },
-  "time": {
-    "now": "开放",
-    "uncoming": "即将举行",
-    "open": "举行中!!",
-    "next": "下次",
-    "until": "到 {time} 为止"
-  },
-  "salmonrun": {
-    "weapons": "发放武器",
-    "bigrun": "大型跑",
-    "eggstrawork": "团队打工竞赛"
-  },
-  "splatfest": {
-    "title": "祭典",
-    "subTitle": "至今为止的祭典",
-    "name": "三色夺宝比赛",
-    "midterm-time": "从 {0} 开始!",
-    "conchshells": "法螺获得率",
-    "votes": "得票率",
-    "open": "开放",
-    "pro": "挑战",
-    "tricolor": "三色夺宝攻击"
-  },
-  "schedule": {
-    "festtime": "祭典比赛举行中!",
-    "series": "挑战",
-    "open": "开放"
-  },
-  "splatnet-shop": {
-    "title": "鱿鱼须商城",
-    "sale": "目前贩卖的装备",
-    "dailydrop": "今日精选",
-    "pickup": "精选",
-    "tip": "每经过4小时, 商品就会发生变化",
-    "tip1": "在此商店中, 可以获取附加的装备能力与平时不同的特殊装备"
-  }
 }

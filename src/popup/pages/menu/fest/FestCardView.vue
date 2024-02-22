@@ -80,6 +80,8 @@ const { isFirst, festival } = defineProps<{
 
 const { t } = useI18n()
 
+console.log(festival)
+
 const isExpend = ref(isFirst)
 const { durationTime, __splatoon3ink_id: id, title, image, teams } = festival
 const hasResult = teams[0] && teams[0].result

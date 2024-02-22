@@ -44,7 +44,8 @@
     "votes": "Stemmen",
     "open": "Open",
     "pro": "Pro",
-    "tricolor": "Driekleurengevecht"
+    "tricolor": "Driekleurengevecht",
+    "result": "Uitslag"
   },
   "schedule": {
     "festtime": "Splatfest battle in progress!",

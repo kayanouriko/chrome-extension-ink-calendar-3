@@ -110,7 +110,7 @@ const eventScheduleMatch = z.object({
 
 const eventScheduleSetting = z.object({
     vsStages: z.array(scheduleStage),
-    vsRule: scheduleRule,
+    vsRule: z.union([scheduleRule, z.null()]),
     leagueMatchEvent: eventScheduleMatch
 })
 
@@ -321,7 +321,9 @@ export const useXSchedulesStore = defineStore('schedules/x', () => {
 
 // 活动比赛
 export const useEventSchedulesStore = defineStore('schedules/event', () => {
-    const schedules = computed(() => useSchedulesDataStore().data?.eventSchedules ?? [])
+    const schedules = computed(
+        () => useSchedulesDataStore().data?.eventSchedules.filter(s => s.leagueMatchSetting.vsRule !== null) ?? []
+    )
     const isEventAvailable = computed(() => schedules.value.length > 0)
     return { isEventAvailable, schedules }
 })

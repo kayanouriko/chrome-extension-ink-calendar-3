@@ -44,7 +44,8 @@
     "votes": "Симпатии",
     "open": "Открытый",
     "pro": "Профи",
-    "tricolor": "Трехцветный бой"
+    "tricolor": "Трехцветный бой",
+    "result": "Итоги"
   },
   "schedule": {
     "festtime": "Splatfest battle in progress!",

@@ -50,7 +50,8 @@
     "votes": "Votes",
     "open": "Open",
     "pro": "Pro",
-    "tricolor": "Tricolor Battle"
+    "tricolor": "Tricolor Battle",
+    "result": "Results"
   },
   "schedule": {
     "festtime": "Splatfest battle in progress!",

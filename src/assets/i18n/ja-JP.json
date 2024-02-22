@@ -48,7 +48,8 @@
     "votes": "得票率",
     "open": "オープン",
     "pro": "チャレンジ",
-    "tricolor": "トリカラアタック"
+    "tricolor": "トリカラアタック",
+    "result": "清算"
   },
   "schedule": {
     "festtime": "フェスマッチ進行中!",

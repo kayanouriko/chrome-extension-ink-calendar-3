@@ -44,7 +44,8 @@
     "votes": "Voti",
     "open": "Aperta",
     "pro": "Sfida",
-    "tricolor": "Attacco tricolore"
+    "tricolor": "Attacco tricolore",
+    "result": "Risultati"
   },
   "schedule": {
     "festtime": "Splatfest battle in progress!",

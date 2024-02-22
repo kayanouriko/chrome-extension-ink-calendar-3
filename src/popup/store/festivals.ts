@@ -52,9 +52,8 @@ const festivalRecord = z
     .transform(({ state, startTime, endTime, ...others }) => ({
         startTime,
         endTime,
-        state,
         ...others,
-        stateText: getFestStateText(state),
+        ...getFestState(state, endTime),
         durationTime: getDurationTime(new Date(startTime), new Date(endTime))
     }))
 
@@ -121,6 +120,16 @@ export const useFestivalsStore = defineStore('festivals', () => {
 })
 
 //==========辅助函数==========
+function getState(state: FestivalState, endTime: string): FestivalState {
+    if (state !== 'CLOSED') return state
+    const now = Date.now()
+    const end = new Date(endTime).getTime()
+    if (now - end > 3 * 24 * 60 * 60 * 1000) {
+        return 'CLOSED'
+    }
+    return 'RESULT'
+}
+
 function rgbaColor(rgba: { r: number; g: number; b: number; a: number }) {
     return `rgba(${rgba.r * 255}, ${rgba.g * 255}, ${rgba.b * 255}, ${rgba.a * 255})`
 }
@@ -151,14 +160,22 @@ export function getFestRegionType(code: string): RegionType {
 }
 
 // 获取祭典状态的国际化文本
-function getFestStateText(state: FestivalState) {
+function getFestState(state: FestivalState, endTime: string) {
+    state = getState(state, endTime)
+    let stateText = ''
     switch (state) {
         case 'SCHEDULED':
-            return 'time.uncoming'
+            stateText = 'time.uncoming'
+            break
         case 'FIRST_HALF':
         case 'SECOND_HALF':
-            return 'time.now'
+            stateText = 'time.now'
+            break
+        case 'RESULT':
+            stateText = 'splatfest.result'
+            break
         default:
-            return ''
+            break
     }
+    return { state, stateText }
 }

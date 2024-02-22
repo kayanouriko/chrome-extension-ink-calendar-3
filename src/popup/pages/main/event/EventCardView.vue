@@ -1,9 +1,9 @@
 <template>
     <div flex="~ col" items-start>
         <!-- 模式 -->
-        <div px-2 flex items-center space-x-2>
-            <img w-6 h-6 :src="icon" alt="rule logo" />
-            <p>{{ t(`splatnet.rules.${ruleId}.name`, ruleName) }}</p>
+        <div v-if="vsRule" px-2 flex items-center space-x-2>
+            <img w-6 h-6 :src="vsRule.icon" alt="rule logo" />
+            <p>{{ t(`splatnet.rules.${vsRule.id}.name`, vsRule.name) }}</p>
         </div>
         <!-- 标题 -->
         <p px-2 pt-2 text-event-primary font-splatoon-title v-html="t(`splatnet.events.${id}.name`, name)" />
@@ -53,7 +53,7 @@ const {
     leagueMatchSetting: {
         leagueMatchEvent: { id, name, desc, regulation },
         vsStages: stages,
-        vsRule: { icon, id: ruleId, name: ruleName }
+        vsRule
     }
 } = schedule
 let { timePeriods } = schedule

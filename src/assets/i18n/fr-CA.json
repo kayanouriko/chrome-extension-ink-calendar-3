@@ -44,7 +44,8 @@
     "votes": "Votes",
     "open": "Ouvert",
     "pro": "Défi",
-    "tricolor": "Match tricolore"
+    "tricolor": "Match tricolore",
+    "result": "Résultats"
   },
   "schedule": {
     "festtime": "Splatfest battle in progress!",

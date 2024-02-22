@@ -1,6 +1,6 @@
 import z from 'zod'
 
-export const festivalState = z.enum(['SCHEDULED', 'CLOSED', 'FIRST_HALF', 'SECOND_HALF'])
+export const festivalState = z.enum(['SCHEDULED', 'CLOSED', 'FIRST_HALF', 'SECOND_HALF', 'RESULT'])
 export type FestivalState = z.infer<typeof festivalState>
 
 export function getYearMonthDayTime(date: Date) {
