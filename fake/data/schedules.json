@@ -1349,47 +1349,6 @@
                 {
                     "leagueMatchSetting": {
                         "leagueMatchEvent": {
-                            "leagueMatchEventId": "MonthlyLeagueMatchReal",
-                            "name": "Monthly Challenge",
-                            "desc": "Aim for the highest Challenge Power!",
-                            "regulationUrl": null,
-                            "regulation": "How high can you get your Challenge Power this month?<br /><br />・ Only primary gear abilities will be enabled in Turf War battles. Secondary gear abilities will have no effect!<br />・ There will be no limits on gear abilities in Anarchy Battle modes!",
-                            "id": "TGVhZ3VlTWF0Y2hFdmVudC1Nb250aGx5TGVhZ3VlTWF0Y2hSZWFs"
-                        },
-                        "vsStages": [
-                            {
-                                "vsStageId": 14,
-                                "name": "Sturgeon Shipyard",
-                                "image": {
-                                    "url": "https://splatoon3.ink/assets/splatnet/v2/stage_img/icon/low_resolution/48684c69d5c5a4ffaf16b712a4895545a8d01196115d514fc878ce99863bb3e9_1.png"
-                                },
-                                "id": "VnNTdGFnZS0xNA=="
-                            },
-                            {
-                                "vsStageId": 19,
-                                "name": "Crableg Capital",
-                                "image": {
-                                    "url": "https://splatoon3.ink/assets/splatnet/v2/stage_img/icon/low_resolution/4e0e9e2046aff1d635e23946d9f0a461486d2aab349079e551037e426ac82c7a_1.png"
-                                },
-                                "id": "VnNTdGFnZS0xOQ=="
-                            }
-                        ],
-                        "__isVsSetting": "LeagueMatchSetting",
-                        "__typename": "LeagueMatchSetting",
-                        "vsRule": { "name": "Splat Zones", "rule": "AREA", "id": "VnNSdWxlLTE=" }
-                    },
-                    "timePeriods": [
-                        { "startTime": "2024-02-25T00:00:00Z", "endTime": "2024-02-25T02:00:00Z" },
-                        { "startTime": "2024-02-25T04:00:00Z", "endTime": "2024-02-25T06:00:00Z" },
-                        { "startTime": "2024-02-25T08:00:00Z", "endTime": "2024-02-25T10:00:00Z" },
-                        { "startTime": "2024-02-25T12:00:00Z", "endTime": "2024-02-25T14:00:00Z" },
-                        { "startTime": "2024-02-25T16:00:00Z", "endTime": "2024-02-25T18:00:00Z" },
-                        { "startTime": "2024-02-25T20:00:00Z", "endTime": "2024-02-25T22:00:00Z" }
-                    ]
-                },
-                {
-                    "leagueMatchSetting": {
-                        "leagueMatchEvent": {
                             "leagueMatchEventId": "NotFound",
                             "name": "？？？？？",
                             "desc": "？？？？？",

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { useFestSchedulesStore, useRegularSchedulesStore } from '@popup/store/schedules'
+import { useFestSchedulesStore, useRegularSchedulesStore, useEventSchedulesStore } from '@popup/store/schedules'
 import { computed } from 'vue'
 
 export interface TabbarItem {
@@ -47,6 +47,7 @@ const coopItem = {
 export const useTabbarStore = defineStore('tabbar', () => {
     const current = computed(() => useFestSchedulesStore().currentFestRecord)
     const schedules = computed(() => useRegularSchedulesStore().schedules)
+    const isEventAvailable = computed(() => useEventSchedulesStore().isEventAvailable)
     const tabbarItems = computed<TabbarItem[]>(() => {
         const tabbarItems: TabbarItem[] = []
         if (current.value && current.value.state !== 'CLOSED') {
@@ -55,7 +56,10 @@ export const useTabbarStore = defineStore('tabbar', () => {
         if (schedules.value.length > 0) {
             tabbarItems.push(regularItem, bankaraItem, xItem)
         }
-        tabbarItems.push(eventItem, coopItem)
+        if (isEventAvailable.value) {
+            tabbarItems.push(eventItem)
+        }
+        tabbarItems.push(coopItem)
         return tabbarItems
     })
     return { tabbarItems }
