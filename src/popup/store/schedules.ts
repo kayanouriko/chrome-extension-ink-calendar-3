@@ -321,9 +321,7 @@ export const useXSchedulesStore = defineStore('schedules/x', () => {
 
 // 活动比赛
 export const useEventSchedulesStore = defineStore('schedules/event', () => {
-    const schedules = computed(
-        () => useSchedulesDataStore().data?.eventSchedules.filter(s => s.leagueMatchSetting.vsRule !== null) ?? []
-    )
+    const schedules = computed(() => useSchedulesDataStore().data?.eventSchedules ?? [])
     const isEventAvailable = computed(() => schedules.value.length > 0)
     return { isEventAvailable, schedules }
 })

@@ -13,6 +13,7 @@
         <CardMapView my-2 :vs-stages="stages" />
         <!-- 规则 -->
         <p
+            v-if="regulation.length"
             mx-2
             mb-4
             p-2

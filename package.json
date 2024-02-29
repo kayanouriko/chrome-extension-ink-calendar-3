@@ -12,21 +12,21 @@
     },
     "dependencies": {
         "@unocss/reset": "^0.58.5",
-        "@vueuse/core": "^10.7.2",
+        "@vueuse/core": "^10.9.0",
         "pinia": "^2.1.7",
-        "vue": "^3.4.15",
+        "vue": "^3.4.21",
         "vue-i18n": "^9.9.1",
-        "vue-router": "^4.2.5",
+        "vue-router": "^4.3.0",
         "zod": "^3.22.4"
     },
     "devDependencies": {
         "@iconify-json/mdi": "^1.1.64",
-        "@types/chrome": "^0.0.260",
-        "@types/node": "^20.11.16",
-        "@vitejs/plugin-vue": "^5.0.3",
+        "@types/chrome": "^0.0.262",
+        "@types/node": "^20.11.21",
+        "@vitejs/plugin-vue": "^5.0.4",
         "typescript": "^5.3.3",
         "unocss": "^0.58.5",
-        "vite": "^5.0.12",
+        "vite": "^5.1.4",
         "vite-plugin-fake-server": "^2.1.1",
         "vue-tsc": "^1.8.27"
     }

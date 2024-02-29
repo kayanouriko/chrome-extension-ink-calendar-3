@@ -6,7 +6,9 @@
                 :class="index ? 'rounded-tr-lg rounded-br-lg' : 'rounded-tl-lg rounded-bl-lg'"
                 :src="stage.image"
             />
-            <p class="-mt-2" px-1 py-0.5 text-xs bg-black>{{ t(`splatnet.stages.${stage.id}.name`, stage.name) }}</p>
+            <p v-if="stage.name.length" class="-mt-2" px-1 py-0.5 text-xs bg-black>
+                {{ t(`splatnet.stages.${stage.id}.name`, stage.name) }}
+            </p>
         </div>
     </div>
 </template>
