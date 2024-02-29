@@ -1,7 +1,7 @@
 <template>
     <div w-full h-full relative text-white font-splatoon-content>
         <Transition>
-            <div v-if="isError" absolute w-full h-full bg-dark1 flex="~ center" z-10>
+            <div v-if="isError" absolute w-full h-full bg-dark1 flex="~ center" z-9999>
                 <div flex="~ col" items-center space-y-3>
                     <p>Unknown error!</p>
                     <button button-checked @click="$emit('reload')">Reload</button>
@@ -9,7 +9,7 @@
             </div>
         </Transition>
         <Transition>
-            <div v-if="isUpdating" absolute w-full h-full bg-dark1 flex="~ center" z-10>
+            <div v-if="isUpdating" absolute w-full h-full bg-dark1 flex="~ center" z-9999>
                 <div flex="~ col" items-center>
                     <img w-16 h-16 src="/assets/images/ui/loading.gif" alt="loading" />
                     <p>loading...</p>

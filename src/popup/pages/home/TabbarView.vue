@@ -1,5 +1,5 @@
 <template>
-    <div h-12 mb-2 px-4 bg-backdrop rounded-full flex justify-center>
+    <div h-12 mb-2 px-4 bg-backdrop rounded-full flex justify-center z-20>
         <button v-for="item in tabbarItems" class="group" :key="item.key" @click="$emit('didChangeTabbarItem', item)">
             <div w-12 h-12 relative>
                 <img v-show="selectedItem === item" absolute src="/assets/images/ui/bg-tabbar-item.png" />

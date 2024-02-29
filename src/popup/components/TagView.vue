@@ -1,5 +1,5 @@
 <template>
-    <div :class="`${bgColor} ${fontSize}`" p="x-2 y-1" rounded-sm text-center text-black>
+    <div :class="`${bgColor} ${fontSize}`" p="x-2 y-1" rounded-sm text-center text-black z-10>
         <div relative>
             <div class="w-10px h-10px" absolute squid-tl top-0 left-0 bg-black />
             <div class="w-10px h-10px" absolute squid-br bottom-0 right-0 bg-black />
