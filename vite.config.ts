@@ -3,6 +3,7 @@ import { defineConfig, Rollup } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import unocss from 'unocss/vite'
 import { vitePluginFakeServer } from 'vite-plugin-fake-server'
+import { vitePluginPrintUrls } from './plugins/vite-plugin-print-urls'
 
 // 各种资源的整理
 const assetFileNames = (chunkInfo: Rollup.PreRenderedAsset) => {
@@ -25,7 +26,7 @@ export default defineConfig({
         // https://github.com/intlify/vue-i18n-next/issues/1457
         __INTLIFY_JIT_COMPILATION__: true
     },
-    plugins: [vue(), unocss(), vitePluginFakeServer()],
+    plugins: [vue(), unocss(), vitePluginFakeServer(), vitePluginPrintUrls()],
     resolve: {
         alias: {
             '@': resolve(__dirname, './src'),

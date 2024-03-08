@@ -4,9 +4,9 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev:popup": "vite --open popup.html",
-        "dev:popup:fake": "vite --mode fake --open popup.html",
-        "dev:option": "vite --open option.html",
+        "dev:popup": "vite --mode popup",
+        "dev:popup:fake": "vite --mode popup.fake",
+        "dev:option": "vite --mode option",
         "build": "vue-tsc && vite build",
         "preview": "vite preview"
     },
