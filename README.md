@@ -13,7 +13,7 @@ In this project, All data access comes from [Data-Access](https://github.com/mis
 
 ### Chrome Web Store
 
-[Install from Chrome Web Store](https://chrome.google.com/webstore/detail/ink-calendar-3/mnlhfcmbaadogjckmomandmdfiekjoog)
+[![tryitnow](./images/tryitnow.png)](https://chrome.google.com/webstore/detail/ink-calendar-3/mnlhfcmbaadogjckmomandmdfiekjoog)
 
 ### Build project by yourself
 
@@ -29,6 +29,10 @@ Find dist directory in project folder.
 ### Releases
 
 Get the zip from [Releases](https://github.com/kayanouriko/chrome-extension-ink-calendar-3/releases)
+
+## Changelog
+
+[CHANGELOG.md](https://github.com/kayanouriko/chrome-extension-ink-calendar-3/tree/main/CHANGELOG.md)
 
 ## How to load unpacked extnsion in Chrome?
 Checkout [chrome-load-unpacked-extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
