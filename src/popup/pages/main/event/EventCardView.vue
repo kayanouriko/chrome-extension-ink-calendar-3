@@ -6,7 +6,7 @@
             <p>{{ t(`splatnet.rules.${vsRule.id}.name`, vsRule.name) }}</p>
         </div>
         <!-- 标题 -->
-        <p px-2 pt-2 text-event-primary font-splatoon-title v-html="t(`splatnet.events.${id}.name`, name)" />
+        <p px-2 text-event-primary font-splatoon-title v-html="t(`splatnet.events.${id}.name`, name)" />
         <!-- 副标题 -->
         <p px-2 text-sm break-words v-html="t(`splatnet.events.${id}.desc`, desc)" />
         <!-- 地图 -->

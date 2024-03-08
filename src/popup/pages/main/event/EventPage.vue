@@ -1,5 +1,5 @@
 <template>
-    <div py-2 border="l-8 red-5" flex="~ col" space-y-2>
+    <div py-2 border="l-8 red-5" flex="~ col">
         <template v-for="(schedule, index) in schedules">
             <template v-if="index === 0">
                 <div pt-2 flex="~ col center" space-y-2>
@@ -11,9 +11,9 @@
                         {{ schedule.currentTimePeriod?.durationTime ?? '' }}
                     </p>
                 </div>
-                <EventCardView v-if="schedule" :now="true" :schedule="schedule" />
+                <EventCardView pt-2 v-if="schedule" :now="true" :schedule="schedule" />
             </template>
-            <EventCardView v-else :now="false" :schedule="schedule" />
+            <EventCardView pt-6 v-else :now="false" :schedule="schedule" />
         </template>
     </div>
 </template>

@@ -10,8 +10,12 @@
             <a href="https://github.com/kayanouriko/chrome-extension-ink-calendar-3" target="_blank">Github</a>
             -
             <a href="https://kayanouriko.cc/" target="_blank">@kayanouriko</a>
+            -
+            <span>{{ version }}</span>
         </p>
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const version = import.meta.env.DEV ? 'Version 1.0.0' : `Version ${chrome.runtime.getManifest().version}`
+</script>

@@ -1,14 +1,28 @@
 <template>
-    <div class="bg-image" w-100vw h-100vh text-white text-base font-splatoon-content flex justify-center items-center>
-        <div w-150 flex="~ col" space-y-8>
+    <div
+        class="bg-image"
+        w-100vw
+        h-100vh
+        text-white
+        text-base
+        font-splatoon-content
+        flex="~ col"
+        justify-between
+        items-center
+        overflow-x-clip
+        overflow-y-auto
+        thin-scrollbar
+    >
+        <div></div>
+        <div py-10 w-150 flex="~ col" space-y-8>
             <div flex justify-center items-center space-x-4>
                 <img square-8 src="/icon/icon128.png" alt="logo" />
                 <p text-3xl>Ink Calendar 3</p>
             </div>
             <GeneralView />
             <AboutView />
-            <FooterView fixed bottom-2 left-0 right-0 />
         </div>
+        <FooterView pb-2 />
     </div>
 </template>
 
