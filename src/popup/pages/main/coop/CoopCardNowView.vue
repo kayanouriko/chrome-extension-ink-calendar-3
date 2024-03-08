@@ -1,18 +1,13 @@
 <template>
     <div pt-4 flex="~ col center">
-        <TagView
-            self-center
-            :title="schedule.mode ? t(schedule.mode) : t('time.now')"
-            :bg-color="getBgColor(schedule.mode)"
-        />
-        <p :class="getColor(schedule.mode)" mt-2 self-center text-sm>
+        <TagView :title="schedule.mode ? t(schedule.mode) : t('time.now')" :bg-color="getBgColor(schedule.mode)" />
+        <p :class="getColor(schedule.mode)" mt-2 text-sm>
             {{ schedule.durationTime }}
         </p>
         <p mt-2>{{ t(`splatnet.stages.${stageId}.name`, stageName) }}</p>
         <img
             class="w-[calc(100%-3.5rem)]"
             mt-2
-            self-center
             h-5.125rem
             object-cover
             rounded-lg

@@ -1,5 +1,5 @@
 <template>
-    <div py-2 border="l-8 red-5" flex="~ col" space-y-6>
+    <div py-2 border="l-8 red-5" flex="~ col" space-y-2>
         <template v-for="(schedule, index) in schedules">
             <template v-if="index === 0">
                 <div pt-2 flex="~ col center" space-y-2>
