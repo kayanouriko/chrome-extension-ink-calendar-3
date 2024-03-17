@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="w-[calc(100%-1rem)] -mt-2" flex>
-            <div v-for="(team, index) in festivalRecord.teams" grow flex justify-center items-center>
+            <div v-for="(team, index) in festivalRecord.teams" w-0 grow flex justify-center items-center>
                 <p mx-2 text-center px-1 py-0.5 text-xs bg-black>
                     {{
                         t(

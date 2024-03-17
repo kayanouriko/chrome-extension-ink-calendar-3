@@ -11,7 +11,11 @@
             -
             <a href="https://kayanouriko.cc/" target="_blank">@kayanouriko</a>
             -
-            <span>{{ version }}</span>
+            <a
+                href="https://chromewebstore.google.com/detail/ink-calendar-3/mnlhfcmbaadogjckmomandmdfiekjoog"
+                target="_blank"
+                >{{ version }}</a
+            >
         </p>
     </div>
 </template>
