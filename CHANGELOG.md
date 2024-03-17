@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.0.5
+  - [Bug] Fixed splatfest display problem.
+  - [UI] Add chrome web store link in option page.
 ## v2.0.4
   - [UI] Update UI Style in Splatnet Shop, Event and Salmon Run.
   - [Bug] Fixed i18n when extra language fallback error.
