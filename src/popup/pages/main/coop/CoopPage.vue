@@ -1,7 +1,7 @@
 <template>
     <div border="l-8 red-5" flex="~ col" space-y-2>
         <template v-if="bannerImage && spSchedule">
-            <img class="-mt-2" :src="bannerImage" alt="banner" />
+            <img class="-mt-2" w-full h-44 bg-white bg-op-30 :src="bannerImage" alt="banner" />
             <CoopCardNowView :schedule="spSchedule" />
             <CoopCardView v-for="schedule in regularSchedules" :schedule="schedule" />
         </template>

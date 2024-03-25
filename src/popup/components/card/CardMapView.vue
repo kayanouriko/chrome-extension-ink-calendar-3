@@ -4,6 +4,8 @@
             <img
                 class="w-10.25rem h-5.125rem"
                 :class="index ? 'rounded-tr-lg rounded-br-lg' : 'rounded-tl-lg rounded-bl-lg'"
+                bg-white
+                bg-op-30
                 :src="stage.image"
             />
             <p v-if="stage.name.length" class="-mt-2" px-1 py-0.5 text-xs bg-black>

@@ -1,7 +1,7 @@
 <template>
     <div class="bg-image" mx-2 my-0.5 pl-4 py-4 flex items-center space-x-4>
         <!-- 装备图标 -->
-        <img square-20 :src="gearImage" :alt="t(`splatnet.gear.${gearId}.name`, gearName)" />
+        <img square-20 bg-white bg-op-30 :src="gearImage" :alt="t(`splatnet.gear.${gearId}.name`, gearName)" />
         <!-- 右侧信息栏 -->
         <div grow flex="~ col" space-y-2>
             <p v-if="!isPickup" text-xs text-yellow-400>

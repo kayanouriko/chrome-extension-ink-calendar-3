@@ -8,7 +8,7 @@
                 {{ team.result ? (team.result.isWinner ? 'WIN!' : '') : '' }}
             </p>
         </div>
-        <img bg-gray-700 :src="image" />
+        <img h-32 bg-gray-700 :src="image" />
         <div :class="hasResult ? 'py-1' : 'pt-1 pb-3'" flex>
             <p v-for="(team, index) in teams" :key="team.id" w-0 grow text-sm break-all>
                 {{ t(`splatnet.festivals.${id}.teams[${index}].teamName`, team.teamName) }}

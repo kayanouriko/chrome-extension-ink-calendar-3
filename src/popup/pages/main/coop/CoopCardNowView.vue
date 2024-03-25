@@ -11,6 +11,8 @@
             h-5.125rem
             object-cover
             rounded-lg
+            bg-white
+            bg-op-30
             :src="stageUrl"
             :alt="t(`splatnet.stages.${stageId}.name`, stageName)"
         />

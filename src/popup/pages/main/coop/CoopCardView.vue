@@ -24,6 +24,8 @@
                     h-14
                     rounded-lg
                     object-cover
+                    bg-white
+                    bg-op-30
                     :src="stageUrl"
                     :alt="t(`splatnet.stages.${stageId}.name`, stageName)"
                 />
