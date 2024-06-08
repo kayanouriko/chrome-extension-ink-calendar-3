@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0
+  - [Bug] Fixed display problem.
+  - [UI] Add triumvirate style in BigRun.
+
 ## v2.0.5
   - [Bug] Fixed splatfest display problem.
   - [UI] Add chrome web store link in option page.
