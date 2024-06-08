@@ -167,7 +167,8 @@ const coopSchedule = z
                     .transform(({ name, ...others }) => ({
                         name,
                         ...others,
-                        icon: getBossIcon(name.toLowerCase())
+                        icon: getBossIcon(name),
+                        isTriumvirate: isTriumvirate(name)
                     }))
             ]),
             coopStage: z.object({
@@ -431,11 +432,17 @@ function getRuleIcon(rule: RuleType) {
 
 // 获取打工 BOSS 图标
 function getBossIcon(boss: string) {
-    const bosses = ['cohozuna', 'horrorboros', 'megalodontia']
+    boss = boss.toLowerCase()
+    const bosses = ['cohozuna', 'horrorboros', 'megalodontia', 'triumvirate']
     if (bosses.includes(boss)) {
         return `/assets/images/boss/${boss}.webp`
     }
     return '/assets/images/boss/boss.png'
+}
+
+// bigrun 是否是头目联合
+function isTriumvirate(boss: string) {
+    return boss.toLowerCase() === 'triumvirate'
 }
 
 // 转换赛程等状态

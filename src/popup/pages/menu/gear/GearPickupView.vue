@@ -1,6 +1,6 @@
 <template>
     <div pb-4 flex="~ col">
-        <img w-full h-44 bg-white bg-op-30 :src="image" :alt="t(`splatnet.brands.${id}.name`, name)" />
+        <img w-full h-44 :src="image" :alt="t(`splatnet.brands.${id}.name`, name)" />
         <div class="-mt-10" self-center flex="~ col">
             <TagView self-center :title="t('splatnet-shop.dailydrop')" />
             <!-- 品牌 -->

@@ -20,12 +20,11 @@
         <div mt-3 px-2 flex items-center space-x-4>
             <div class="w-55%" flex="~ col" items-center>
                 <img
+                    :class="boss?.isTriumvirate && 'border border-0.5 border-gray-7'"
                     w-full
                     h-14
                     rounded-lg
                     object-cover
-                    bg-white
-                    bg-op-30
                     :src="stageUrl"
                     :alt="t(`splatnet.stages.${stageId}.name`, stageName)"
                 />

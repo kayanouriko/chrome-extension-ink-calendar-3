@@ -197,7 +197,7 @@ function getJSONObject<T>(data: any, transform: (data: any) => T): T | undefined
 
 //============ 辅助函数 ============
 // 读取数据
-async function read(keys: string | string[], type: 'local' | 'sync' = 'local') {
+function read(keys: string | string[], type: 'local' | 'sync' = 'local') {
     return chrome.storage[type].get(keys)
 }
 
