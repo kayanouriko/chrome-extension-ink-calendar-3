@@ -221,11 +221,37 @@ const coopGroupingSchedule = z.object({
         .transform(({ nodes }) => nodes)
 })
 
-const tricolorStage = z.object({
-    name: z.string(),
-    image: imageTransform,
-    id: z.string()
-})
+const tricolorStage = z
+    .object({
+        name: z.string(),
+        image: imageTransform,
+        id: z.string()
+    })
+    .optional()
+
+// 祭典三色终盘赛程安排
+const timetable = z
+    .array(
+        z
+            .object({
+                startTime: z.string(),
+                endTime: z.string(),
+                festMatchSettings: z.array(
+                    z.object({
+                        vsStages: z.array(tricolorStage)
+                    })
+                )
+            })
+            .transform(({ startTime, endTime, festMatchSettings }) => ({
+                startTime,
+                endTime,
+                isEarlyHour: isEarlyHour(startTime),
+                yearShowTime: getYearMonthDayTime(new Date(startTime)),
+                showTime: (() => getHourMinTime(new Date(startTime)) + ' - ' + getHourMinTime(new Date(endTime)))(),
+                stage: festMatchSettings[0].vsStages[0]
+            }))
+    )
+    .optional()
 
 const currentFest = z.union([
     z.null(),
@@ -235,17 +261,22 @@ const currentFest = z.union([
             endTime: z.string(),
             midtermTime: z.string(),
             state: festivalState,
-            tricolorStage
+            tricolorStage,
+            tricolorStages: z.array(tricolorStage).optional(),
+            timetable
         })
-        .transform(({ startTime, endTime, state, midtermTime, ...others }) => ({
+        .transform(({ startTime, endTime, state, midtermTime, tricolorStage, tricolorStages, ...others }) => ({
             startTime,
             endTime,
             state,
+            tricolorStage,
+            tricolorStages,
             ...others,
             durationTime: getDurationTime(new Date(startTime), new Date(endTime)),
             upcomingTime: getYearMonthDayTime(new Date(startTime)),
             midtermTime: (() =>
-                getYearMonthDayTime(new Date(midtermTime)) + ' ' + getHourMinTime(new Date(midtermTime)))()
+                getYearMonthDayTime(new Date(midtermTime)) + ' ' + getHourMinTime(new Date(midtermTime)))(),
+            currentTricolorStage: getCurrentTricolorStage(tricolorStage, tricolorStages)
         }))
 ])
 
@@ -298,6 +329,7 @@ export type ScheduleStatus = z.infer<typeof scheduleStatus>
 export type ScheduleRule = z.infer<typeof scheduleRule>
 export type ScheduleStage = z.infer<typeof scheduleStage>
 export type TricolorStage = z.infer<typeof tricolorStage>
+export type Timetable = z.infer<typeof timetable>
 export type RuleType = z.infer<typeof ruleType>
 export type EventSchedule = z.infer<typeof eventSchedule>
 export type CoopSchedule = z.infer<typeof coopSchedule>
@@ -457,4 +489,10 @@ function getScheduleStatus(startTime: string, endTime: string): ScheduleStatus {
     } else {
         return 'past'
     }
+}
+
+// 三色夺宝比赛相关的解析
+// 在终盘比赛中，三色夺宝比赛的地图是轮换的，这里要对应处理
+function getCurrentTricolorStage(tricolorStage: TricolorStage, tricolorStages?: TricolorStage[]) {
+    return tricolorStage ? tricolorStage : tricolorStages?.[0]
 }

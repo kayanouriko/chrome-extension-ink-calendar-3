@@ -17,45 +17,47 @@
         <!-- 比分模板 -->
         <template v-if="hasResult">
             <table v-show="isExpend" my-2 text-xs>
-                <tr bg-slate-900>
-                    <th class="w-34%" border="~ slate-900"></th>
-                    <th class="w-66%" border="~ slate-900">
-                        <div w-full flex>
-                            <div
-                                v-for="(team, index) in teams"
-                                :key="team.id"
-                                :style="`background-color: ${team.color};`"
-                                m-1
-                                grow
-                                flex
-                                justify-center
-                                items-center
-                                rounded
-                            >
-                                <img
-                                    square-6
-                                    :src="team.image"
-                                    :alt="t(`splatnet.festivals.${id}.teams[${index}].teamName`, team.teamName)"
-                                />
+                <tbody>
+                    <tr bg-slate-900>
+                        <th class="w-34%" border="~ slate-900"></th>
+                        <th class="w-66%" border="~ slate-900">
+                            <div w-full flex>
+                                <div
+                                    v-for="(team, index) in teams"
+                                    :key="team.id"
+                                    :style="`background-color: ${team.color};`"
+                                    m-1
+                                    grow
+                                    flex
+                                    justify-center
+                                    items-center
+                                    rounded
+                                >
+                                    <img
+                                        square-6
+                                        :src="team.image"
+                                        :alt="t(`splatnet.festivals.${id}.teams[${index}].teamName`, team.teamName)"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </th>
-                </tr>
-                <tr v-for="table in tables" :key="table.key">
-                    <td p-2 bg-slate-800 text-left border="~ slate-900">{{ t(table.key) }}</td>
-                    <td bg-slate-700 border="~ slate-900">
-                        <div w-full flex>
-                            <p
-                                v-for="team in teams"
-                                :class="boolFromTeam(table.bool, team) ? 'text-[#ECFB58]' : 'text-white'"
-                                w-0
-                                grow
-                            >
-                                {{ `${((valueFromTeam(table.value, team) ?? 0) * 100).toFixed(2)}%` }}
-                            </p>
-                        </div>
-                    </td>
-                </tr>
+                        </th>
+                    </tr>
+                    <tr v-for="table in tables" :key="table.key">
+                        <td p-2 bg-slate-800 text-left border="~ slate-900">{{ t(table.key) }}</td>
+                        <td bg-slate-700 border="~ slate-900">
+                            <div w-full flex>
+                                <p
+                                    v-for="team in teams"
+                                    :class="boolFromTeam(table.bool, team) ? 'text-[#ECFB58]' : 'text-white'"
+                                    w-0
+                                    grow
+                                >
+                                    {{ `${((valueFromTeam(table.value, team) ?? 0) * 100).toFixed(2)}%` }}
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <button self-center pb-1 @click="isExpend = !isExpend">
                 <img

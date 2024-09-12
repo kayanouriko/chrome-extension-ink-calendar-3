@@ -9,16 +9,13 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(
-    defineProps<{
-        bgColor?: string
-        title?: string
-        fontSize?: string
-    }>(),
-    {
-        bgColor: 'bg-tag-primary',
-        title: 'time.next',
-        fontSize: 'text-sm'
-    }
-)
+const {
+    bgColor = 'bg-tag-primary',
+    title = 'time.next',
+    fontSize = 'text-sm'
+} = defineProps<{
+    bgColor?: string
+    title?: string
+    fontSize?: string
+}>()
 </script>

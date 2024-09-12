@@ -1,9 +1,9 @@
 <template>
     <div w-full h-full relative text-white font-splatoon-content>
         <Transition>
-            <div v-if="isError" absolute w-full h-full bg-dark1 flex="~ center" z-9999>
+            <div v-if="errorMsg !== undefined" absolute w-full h-full bg-dark1 flex="~ center" z-9999>
                 <div flex="~ col" items-center space-y-3>
-                    <p>Unknown error!</p>
+                    <p whitespace-pre-wrap text-center px-6>{{ errorMsg }}</p>
                     <button button-checked @click="$emit('reload')">Reload</button>
                 </div>
             </div>
@@ -23,14 +23,14 @@
 <script setup lang="ts">
 interface Props {
     isUpdating?: boolean
-    isError?: boolean
+    errorMsg?: string
 }
 
 defineEmits<{
     (event: 'reload'): void
 }>()
 
-withDefaults(defineProps<Props>(), { isUpdating: false, isError: false })
+const { isUpdating = false, errorMsg = undefined } = defineProps<Props>()
 </script>
 
 <style scoped>

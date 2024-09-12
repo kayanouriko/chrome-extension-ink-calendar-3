@@ -49,7 +49,8 @@
     "open": "オープン",
     "pro": "チャレンジ",
     "tricolor": "トリカラアタック",
-    "result": "清算"
+    "result": "清算",
+    "timetable": "トリカラマッチ時間割"
   },
   "schedule": {
     "festtime": "フェスマッチ進行中!",

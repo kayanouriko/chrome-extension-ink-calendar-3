@@ -53,15 +53,10 @@
 import { useI18n } from 'vue-i18n'
 import { BrandGear } from '@popup/store/gear'
 
-const { brandGear } = withDefaults(
-    defineProps<{
-        isPickup: boolean
-        brandGear: BrandGear
-    }>(),
-    {
-        isPickup: false
-    }
-)
+const { isPickup = false, brandGear } = defineProps<{
+    isPickup: boolean
+    brandGear: BrandGear
+}>()
 
 const { t } = useI18n()
 const {

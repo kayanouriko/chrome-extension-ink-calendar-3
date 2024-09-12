@@ -2,17 +2,18 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useSchedulesDataStore, useI18nDataStore, useFestivalsDataStore } from './download'
 import { useStorageStore } from '@common/chrome/storage'
+import { ZodError } from 'zod'
 
 // 这个 store 只负责最开始的请求请求, 国际化, 初始化等问题
 export const useHomeStore = defineStore('home', () => {
     // 是否是更新状态
     const isUpdating = ref(false)
-    const isError = ref(false)
+    const errorMsg = ref<string | undefined>(undefined)
     // App 的整个初始化入口
     async function startUpdate() {
         try {
             isUpdating.value = true
-            isError.value = false
+            errorMsg.value = undefined
             // 先获取缓存的数据
             await useStorageStore().update()
             // 开始更新
@@ -25,11 +26,15 @@ export const useHomeStore = defineStore('home', () => {
                 useFestivalsDataStore().update()
             ])
         } catch (error) {
-            console.log(error)
-            isError.value = true
+            if (error instanceof ZodError) {
+                console.log(error)
+                errorMsg.value = 'JSON parsing error\nPlease wait for the extension to update'
+            } else {
+                errorMsg.value = 'Unknown error'
+            }
         } finally {
             isUpdating.value = false
         }
     }
-    return { isUpdating, isError, startUpdate }
+    return { isUpdating, errorMsg, startUpdate }
 })

@@ -16,7 +16,8 @@
         <FestActiveView
             v-else-if="currentFest && (currentFest.state === 'FIRST_HALF' || currentFest.state === 'SECOND_HALF')"
             :midterm-time="currentFest.midtermTime"
-            :stage="currentFest.tricolorStage"
+            :stage="currentFest.currentTricolorStage"
+            :timetable="currentFest.timetable"
         />
         <CardView
             v-for="(schedule, index) in schedules"

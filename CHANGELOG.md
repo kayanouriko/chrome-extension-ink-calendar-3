@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.2.0
+  - [Feature] Supported final splatfest data.
+  - [UI] Add final splatfest timetable dialog.
+  - [UI] Add json parse error tip.
+
 ## v2.1.0
   - [Bug] Fixed display problem.
   - [UI] Add triumvirate style in BigRun.

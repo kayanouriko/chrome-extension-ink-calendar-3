@@ -1,6 +1,6 @@
 <template>
     <div class="w-22.5rem h-37.5rem" text-white text-base font-splatoon-content>
-        <BasePage :is-updating="isUpdating" :is-error="isError" @reload="startUpdate">
+        <BasePage :is-updating="isUpdating" :error-msg="errorMsg" @reload="startUpdate">
             <RouterView v-slot="{ Component }">
                 <KeepAlive include="HomePage">
                     <component :is="Component" />
@@ -22,7 +22,7 @@ import { useI18nDataStore } from '@popup/store/download'
 import BasePage from '@popup/pages/base/BasePage.vue'
 
 const { startUpdate } = useHomeStore()
-const { isUpdating, isError } = storeToRefs(useHomeStore())
+const { isUpdating, errorMsg } = storeToRefs(useHomeStore())
 const { data } = storeToRefs(useI18nDataStore())
 const { locale, setLocaleMessage, getLocaleMessage } = useI18n()
 
