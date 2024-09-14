@@ -29,7 +29,7 @@
                 <button @click="$emit('close')">
                     <img square-7 src="/assets/images/ui/btn-close.webp" alt="menu" />
                 </button>
-                <p font-splatoon-title v-t="'splatfest.timetable'" />
+                <p font-splatoon-title text-lg v-t="'splatfest.timetable'" />
                 <div square-7 />
             </div>
             <!-- 时刻表 -->
@@ -45,7 +45,15 @@
                 <!-- Card -->
                 <div v-for="(item, index) in timetable" :key="index" flex="~ col">
                     <template v-if="item.stage">
-                        <p v-if="index === 0 || item.isEarlyHour" text-yellow-4 font-splatoon-title px-4 pt-4 pb-3>
+                        <p
+                            v-if="index === 0 || item.isEarlyHour"
+                            text-lg
+                            text-yellow-4
+                            font-splatoon-title
+                            px-4
+                            pt-4
+                            pb-3
+                        >
                             {{ item.yearShowTime }}
                         </p>
                         <p
