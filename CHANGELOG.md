@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.2.1
+  - [Bug] Fixed splatfest display problem.
+
 ## v2.2.0
   - [Feature] Supported final splatfest data.
   - [UI] Add final splatfest timetable dialog.

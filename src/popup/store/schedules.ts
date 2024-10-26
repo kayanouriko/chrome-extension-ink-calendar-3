@@ -230,8 +230,9 @@ const tricolorStage = z
     .optional()
 
 // 祭典三色终盘赛程安排
-const timetable = z
-    .array(
+const timetable = z.union([
+    z.null(),
+    z.array(
         z
             .object({
                 startTime: z.string(),
@@ -251,7 +252,7 @@ const timetable = z
                 stage: festMatchSettings[0].vsStages[0]
             }))
     )
-    .optional()
+])
 
 const currentFest = z.union([
     z.null(),
@@ -265,19 +266,22 @@ const currentFest = z.union([
             tricolorStages: z.array(tricolorStage).optional(),
             timetable
         })
-        .transform(({ startTime, endTime, state, midtermTime, tricolorStage, tricolorStages, ...others }) => ({
-            startTime,
-            endTime,
-            state,
-            tricolorStage,
-            tricolorStages,
-            ...others,
-            durationTime: getDurationTime(new Date(startTime), new Date(endTime)),
-            upcomingTime: getYearMonthDayTime(new Date(startTime)),
-            midtermTime: (() =>
-                getYearMonthDayTime(new Date(midtermTime)) + ' ' + getHourMinTime(new Date(midtermTime)))(),
-            currentTricolorStage: getCurrentTricolorStage(tricolorStage, tricolorStages)
-        }))
+        .transform(
+            ({ startTime, endTime, state, midtermTime, tricolorStage, tricolorStages, timetable, ...others }) => ({
+                startTime,
+                endTime,
+                state,
+                tricolorStage,
+                tricolorStages,
+                timetable,
+                ...others,
+                durationTime: getDurationTime(new Date(startTime), new Date(endTime)),
+                upcomingTime: getYearMonthDayTime(new Date(startTime)),
+                midtermTime: (() =>
+                    getYearMonthDayTime(new Date(midtermTime)) + ' ' + getHourMinTime(new Date(midtermTime)))(),
+                ...getCurrentTricolorStage(tricolorStage, tricolorStages, timetable)
+            })
+        )
 ])
 
 export const schedulesData = z
@@ -493,6 +497,30 @@ function getScheduleStatus(startTime: string, endTime: string): ScheduleStatus {
 
 // 三色夺宝比赛相关的解析
 // 在终盘比赛中，三色夺宝比赛的地图是轮换的，这里要对应处理
-function getCurrentTricolorStage(tricolorStage: TricolorStage, tricolorStages?: TricolorStage[]) {
-    return tricolorStage ? tricolorStage : tricolorStages?.[0]
+
+function getCurrentTricolorStage(
+    tricolorStage: TricolorStage,
+    tricolorStages?: TricolorStage[],
+    timetable?: Timetable | null
+) {
+    let filterStages: TricolorStage[] = []
+    // 目前分为三种情况
+    // 1. tricolorStage 存在，则祭典期间三色夺宝比赛为固定地图
+    if (tricolorStage !== undefined) {
+        filterStages = [tricolorStage]
+    }
+    // 2. timetable 为 null 或者 undefined 且 tricolorStages 长度大于等于 2，则祭典期间三色夺宝比赛为前两张地图随机
+    if ((timetable === null || timetable === undefined) && tricolorStages && tricolorStages?.length >= 2) {
+        filterStages = [tricolorStages[0], tricolorStages[1]]
+    }
+    // 3. timetable 存在且 tricolorStages 长度存在，则祭典期间三色夺宝比赛为日程地图轮流显示
+    if (timetable && tricolorStages && tricolorStages?.length > 0) {
+        filterStages = [tricolorStages?.[0]]
+    }
+    const currentTricolorStages = filterStages.filter(stage => stage !== undefined)
+    const shouldShowTricolorStage = currentTricolorStages.length > 0
+    return {
+        currentTricolorStages,
+        shouldShowTricolorStage
+    }
 }

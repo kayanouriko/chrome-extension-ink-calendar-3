@@ -14,9 +14,13 @@
             :festival="currentFestRecord"
         ></FestCardView>
         <FestActiveView
-            v-else-if="currentFest && (currentFest.state === 'FIRST_HALF' || currentFest.state === 'SECOND_HALF')"
+            v-else-if="
+                currentFest &&
+                (currentFest.state === 'FIRST_HALF' || currentFest.state === 'SECOND_HALF') &&
+                currentFest.shouldShowTricolorStage
+            "
             :midterm-time="currentFest.midtermTime"
-            :stage="currentFest.currentTricolorStage"
+            :stages="currentFest.currentTricolorStages"
             :timetable="currentFest.timetable"
         />
         <CardView
