@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.2.2
+  - [Feature] Add `host_permissions`.
+
 ## v2.2.1
   - [Bug] Fixed splatfest display problem.
 
